@@ -1365,22 +1365,22 @@ export default function OrbitzTechnologyHomePage() {
 
           <div className="grid md:grid-cols-4 gap-8 mb-16">
             {/* Cloud Platforms */}
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Cloud Platforms</h3>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Cloud Platforms</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3 bg-blue-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" className="w-8 h-8 object-contain" />
                   <span className="text-blue-600 font-semibold">Microsoft Azure</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-blue-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="AWS" className="w-8 h-8 object-contain" />
                   <span className="text-blue-600 font-semibold">Amazon AWS</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-blue-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" className="w-8 h-8 object-contain" />
                   <span className="text-blue-600 font-semibold">Google Cloud</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-blue-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudflare.svg" alt="Hybrid" className="w-8 h-8 object-contain" />
                   <span className="text-blue-600 font-semibold">Hybrid Solutions</span>
                 </div>
@@ -1388,25 +1388,25 @@ export default function OrbitzTechnologyHomePage() {
             </div>
 
             {/* Development */}
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Development</h3>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Development</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3 bg-green-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-8 h-8 object-contain" />
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-8 h-8 object-contain" />
                   <span className="text-green-600 font-semibold">React & Next.js</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-green-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-8 h-8 object-contain" />
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-8 h-8 object-contain" />
                   <span className="text-green-600 font-semibold">Node.js & Python</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-green-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" className="w-8 h-8 object-contain" />
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-8 h-8 object-contain" />
                   <span className="text-green-600 font-semibold">.NET & C#</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-green-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS" className="w-8 h-8 object-contain" />
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" className="w-8 h-8 object-contain" />
                   <span className="text-green-600 font-semibold">Mobile (iOS/Android)</span>
@@ -1415,22 +1415,22 @@ export default function OrbitzTechnologyHomePage() {
             </div>
 
             {/* Databases */}
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Databases</h3>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Databases</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3 bg-purple-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" className="w-8 h-8 object-contain" />
                   <span className="text-purple-600 font-semibold">SQL Server</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-purple-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-8 h-8 object-contain" />
                   <span className="text-purple-600 font-semibold">PostgreSQL</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-purple-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8 object-contain" />
                   <span className="text-purple-600 font-semibold">MongoDB</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-purple-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-8 h-8 object-contain" />
                   <span className="text-purple-600 font-semibold">Redis Cache</span>
                 </div>
@@ -1438,22 +1438,22 @@ export default function OrbitzTechnologyHomePage() {
             </div>
 
             {/* Security */}
-            <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Security</h3>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Security</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3 bg-red-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zeromq.svg" alt="Zero Trust" className="w-8 h-8 object-contain" />
                   <span className="text-red-600 font-semibold">Zero Trust Architecture</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-red-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/auth0.svg" alt="MFA" className="w-8 h-8 object-contain" />
                   <span className="text-red-600 font-semibold">Multi-Factor Auth</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-red-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/letsencrypt.svg" alt="Encryption" className="w-8 h-8 object-contain" />
                   <span className="text-red-600 font-semibold">Encryption at Rest</span>
                 </div>
-                <div className="flex items-center justify-center gap-3 bg-red-50 rounded-xl py-3 px-2">
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
                   <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/splunk.svg" alt="SIEM" className="w-8 h-8 object-contain" />
                   <span className="text-red-600 font-semibold">SIEM Solutions</span>
                 </div>
