@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import Chatbot from "@/components/chatbot"
 import {
   ChevronDown,
   Search,
@@ -18,11 +19,61 @@ import {
   Clock,
   Award,
   CheckCircle,
+  Building2,
+  Stethoscope,
+  Briefcase,
+  Home,
+  GraduationCap,
+  Scale,
+  ShoppingBag,
+  Factory,
+  Laptop,
+  Cloud,
+  Database,
+  BookOpen,
+  FileText,
+  Video,
+  Presentation,
 } from "lucide-react"
 
 export default function OrbitzTechnologyHomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Video content configuration
+  const videoContent = [
+    {
+      id: 1,
+      videoSrc: "/hero_bg.mp4", // Keep existing video for AI content
+      title: {
+        line1: "Unlock Growth With Smart AI—",
+        line2: "Boost Productivity, Cut Costs"
+      },
+      description: "Embrace the future of work with AI-powered transformation. Drive efficiency, agility, and growth with solutions built just for you.",
+      primaryButton: "Explore AI Solutions",
+      secondaryButton: "Schedule Demo",
+      overlayStyle: "from-purple-600/80 via-pink-500/70 to-purple-700/80" // Original gradient
+    },
+    {
+      id: 2,
+      videoSrc: "/hero_bg2.mp4", // This will be the IT partner video (same video, different overlay)
+      title: {
+        line1: "Your All-in-One IT Partner",
+        line2: "for Growth"
+      },
+      description: "Cut through complexity with integrated hardware, infrastructure, and custom software. Scale smarter, work easier, and unlock new possibilities.",
+      primaryButton: "Discover Our Solutions",
+      secondaryButton: "Get Started",
+      overlayStyle: "from-blue-600/80 via-cyan-500/70 to-blue-700/80" // Different gradient for visual distinction
+    }
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,112 +83,510 @@ export default function OrbitzTechnologyHomePage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Video rotation effect
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentVideoIndex((prevIndex) => 
+          prevIndex === videoContent.length - 1 ? 0 : prevIndex + 1
+        )
+      }, 3000) // Change every 3 seconds as requested
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [videoContent.length, isPaused])
+
+  // Function to handle manual video switching
+  const handleVideoSwitch = (index: number) => {
+    setCurrentVideoIndex(index)
+    // Reset the interval when manually switching
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentVideoIndex((prevIndex) => 
+          prevIndex === videoContent.length - 1 ? 0 : prevIndex + 1
+        )
+      }, 3000)
+    }
+  }
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+    if (isMenuOpen) {
+      document.addEventListener('click', handleClickOutside)
+    }
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [isMenuOpen])
+
+  const handleDropdownEnter = (dropdownName: string) => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current)
+    }
+    setActiveDropdown(dropdownName)
+  }
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 150)
+  }
+
+  const services = [
+    { name: "Technology Advisory", href: "/services/technology-advisory", icon: Users, desc: "Strategic technology guidance" },
+    { name: "AI Development Solutions", href: "/services/ai-development", icon: Code, desc: "Artificial intelligence solutions" },
+    { name: "Software Development", href: "/services/software-development", icon: Laptop, desc: "Custom software solutions" },
+    { name: "Cyber Security", href: "/services/cybersecurity", icon: Shield, desc: "Advanced security solutions" },
+    { name: "Managed IT Services", href: "/services/managed-it", icon: Cloud, desc: "24/7 IT support and management" },
+  ]
+
+  const industries = [
+    { name: "Healthcare", href: "/industries/healthcare", icon: Stethoscope, desc: "HIPAA-compliant solutions" },
+    { name: "Financial Services", href: "/industries/financial", icon: Briefcase, desc: "Secure banking technology" },
+    { name: "Real Estate", href: "/industries/real-estate", icon: Home, desc: "Property management systems" },
+    { name: "Manufacturing", href: "/industries/manufacturing", icon: Factory, desc: "Industrial IoT solutions" },
+    { name: "Education", href: "/industries/education", icon: GraduationCap, desc: "Learning management systems" },
+    { name: "Legal", href: "/industries/legal", icon: Scale, desc: "Case management solutions" },
+  ]
+
+  const resources = [
+    { name: "Case Studies", href: "/resources/case-studies", icon: FileText, desc: "Success stories and outcomes" },
+    { name: "Whitepapers", href: "/resources/whitepapers", icon: BookOpen, desc: "In-depth technical insights" },
+    { name: "Blog", href: "/resources/blog", icon: Presentation, desc: "Latest technology trends" },
+    { name: "Webinars", href: "/resources/webinars", icon: Video, desc: "Educational sessions" },
+  ]
+
   return (
     <div className="min-h-screen bg-white">
 
       {/* Navigation */}
-      <nav className={`sticky top-0 w-full z-50 transition-all duration-300 bg-white shadow-sm`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100' 
+          : 'bg-white shadow-sm'
+      }`}>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <a href="/" className="flex items-center space-x-3">
-                <img src="/logo2.png" alt="Orbitz Technology Logo" className="w-14 h-14 object-contain drop-shadow-lg" style={{background: 'white', borderRadius: '12px', padding: '4px', border: '2px solid #7c3aed'}} />
-                <span className="text-2xl font-extrabold text-gray-900 align-middle tracking-tight">Orbitz Technology</span>
+            <div className="flex items-center">
+              <a href="/" className="flex items-center space-x-3 group">
+                <div className="relative">
+                  <img 
+                    src="/logo2.png" 
+                    alt="Orbitz Technology Logo" 
+                    className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" 
+                    style={{
+                      background: 'white', 
+                      borderRadius: '10px', 
+                      padding: '3px', 
+                      border: '2px solid #7c3aed',
+                      boxShadow: '0 4px 12px rgba(124, 58, 237, 0.15)'
+                    }} 
+                  />
+                </div>
+                <span className="text-xl lg:text-2xl font-bold text-gray-900 tracking-tight group-hover:text-purple-700 transition-colors duration-300">
+                  Orbitz Technology
+                </span>
               </a>
             </div>
+
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center space-x-6">
-                {/* Services Dropdown */}
-                <div className="relative group">
-                  <button className="text-gray-700 hover:text-purple-700 font-medium transition-colors focus:outline-none flex items-center">Services <span className="ml-1">▼</span></button>
-                  <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
-                    <a href="/services/managed-it" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Managed IT</a>
-                    <a href="/services/software-development" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Software Development</a>
-                    <a href="/services/it-consulting" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">IT Consulting</a>
-                    <a href="/services/cybersecurity" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Cybersecurity</a>
+            <div className="hidden lg:flex items-center space-x-1">
+              {/* Expertise Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter('services')}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
+                  <span>Expertise</span>
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'services' ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                
+                {/* Mega Menu */}
+                <div className={`absolute left-0 top-full mt-2 w-96 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
+                  activeDropdown === 'services' 
+                    ? 'opacity-100 visible transform translate-y-0' 
+                    : 'opacity-0 invisible transform -translate-y-2'
+                }`}>
+                  <div className="p-6">
+                    <div className="grid gap-3">
+                      {services.map((service, index) => (
+                        <a
+                          key={index}
+                          href={service.href}
+                          className="flex items-start p-3 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-200">
+                            <service.icon className="w-5 h-5 text-purple-600" />
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">
+                              {service.name}
+                            </h3>
+                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                              {service.desc}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                {/* Industries Dropdown */}
-                <div className="relative group">
-                  <button className="text-gray-700 hover:text-purple-700 font-medium transition-colors focus:outline-none flex items-center">Industries <span className="ml-1">▼</span></button>
-                  <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
-                    <a href="/industries/healthcare" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Healthcare</a>
-                    <a href="/industries/financial" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Financial Services</a>
-                    <a href="/industries/real-estate" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Real Estate</a>
-                    <a href="/industries/manufacturing" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Manufacturing</a>
-                  </div>
-                </div>
-                {/* Resources Dropdown */}
-                <div className="relative group">
-                  <button className="text-gray-700 hover:text-purple-700 font-medium transition-colors focus:outline-none flex items-center">Resources <span className="ml-1">▼</span></button>
-                  <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg py-2 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-all z-50">
-                    <a href="/resources/case-studies" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Case Studies</a>
-                    <a href="/resources/whitepapers" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Whitepapers</a>
-                    <a href="/resources/blog" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Blog</a>
-                    <a href="/resources/webinars" className="block px-6 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700">Webinars</a>
-                  </div>
-                </div>
-                <a href="/contact" className="text-gray-700 hover:text-purple-700 font-medium transition-colors">Contact</a>
-                <a href="/about" className="text-gray-700 hover:text-purple-700 font-medium transition-colors">About</a>
               </div>
-              <div className="flex items-center space-x-4">
-                <Search className="w-5 h-5 text-gray-600 cursor-pointer hover:text-purple-600" />
-                <a href="/contact" className="ml-4 px-6 py-2 bg-purple-600 text-white rounded-full font-semibold shadow-lg hover:bg-purple-700 transition">Get Started</a>
+
+              {/* Markets Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter('industries')}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
+                  <span>Markets</span>
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'industries' ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                
+                <div className={`absolute left-0 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
+                  activeDropdown === 'industries' 
+                    ? 'opacity-100 visible transform translate-y-0' 
+                    : 'opacity-0 invisible transform -translate-y-2'
+                }`}>
+                  <div className="p-6">
+                    <div className="grid gap-3">
+                      {industries.map((industry, index) => (
+                        <a
+                          key={index}
+                          href={industry.href}
+                          className="flex items-start p-3 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
+                            <industry.icon className="w-5 h-5 text-blue-600" />
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                              {industry.name}
+                            </h3>
+                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                              {industry.desc}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              {/* Insights Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter('resources')}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
+                  <span>Insights</span>
+                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                    activeDropdown === 'resources' ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                
+                <div className={`absolute left-0 top-full mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
+                  activeDropdown === 'resources' 
+                    ? 'opacity-100 visible transform translate-y-0' 
+                    : 'opacity-0 invisible transform -translate-y-2'
+                }`}>
+                  <div className="p-6">
+                    <div className="grid gap-3">
+                      {resources.map((resource, index) => (
+                        <a
+                          key={index}
+                          href={resource.href}
+                          className="flex items-start p-3 rounded-lg hover:bg-green-50 transition-all duration-200 group"
+                        >
+                          <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
+                            <resource.icon className="w-5 h-5 text-green-600" />
+                          </div>
+                          <div className="ml-3">
+                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                              {resource.name}
+                            </h3>
+                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                              {resource.desc}
+                            </p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Who We Are */}
+              <a 
+                href="/about" 
+                className="px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50"
+              >
+                Who We Are
+              </a>
+            </div>
+
+            {/* Right Side Actions */}
+            <div className="hidden lg:flex items-center space-x-4">
+              {/* Search */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  className="p-2 text-gray-600 hover:text-purple-600 rounded-lg hover:bg-purple-50 transition-all duration-200"
+                >
+                  <Search className="w-5 h-5" />
+                </button>
+                
+                {/* Search Dropdown */}
+                {isSearchOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 p-4">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="Search services, industries, resources..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        autoFocus
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* CTA Button */}
+              <a 
+                href="/contact" 
+                className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+              >
+                Get Started
+              </a>
             </div>
 
             {/* Mobile menu button */}
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2">
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="lg:hidden flex items-center space-x-3">
+              {/* Mobile Search Icon */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsSearchOpen(!isSearchOpen)
+                  setIsMenuOpen(false) // Close menu when search opens
+                }} 
+                className="p-2.5 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-30"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5 text-gray-700" />
+              </button>
+              
+              {/* Mobile Menu Toggle */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsMenuOpen(!isMenuOpen)
+                  setIsSearchOpen(false) // Close search when menu opens
+                }} 
+                className="p-2.5 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-30"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              >
+                <div className="w-6 h-6 relative flex flex-col justify-center">
+                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1.5'
+                  }`}></span>
+                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+                  }`}></span>
+                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1.5'
+                  }`}></span>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-2 space-y-2">
-              <a href="/services/managed-it" className="block py-2 text-gray-700">Managed IT</a>
-              <a href="/services/software-development" className="block py-2 text-gray-700">Software Development</a>
-              <a href="/services/it-consulting" className="block py-2 text-gray-700">IT Consulting</a>
-              <a href="/services/cybersecurity" className="block py-2 text-gray-700">Cybersecurity</a>
-              <a href="/industries/healthcare" className="block py-2 text-gray-700">Healthcare</a>
-              <a href="/industries/financial" className="block py-2 text-gray-700">Financial Services</a>
-              <a href="/industries/real-estate" className="block py-2 text-gray-700">Real Estate</a>
-              <a href="/industries/manufacturing" className="block py-2 text-gray-700">Manufacturing</a>
-              <a href="/resources/case-studies" className="block py-2 text-gray-700">Case Studies</a>
-              <a href="/resources/whitepapers" className="block py-2 text-gray-700">Whitepapers</a>
-              <a href="/resources/blog" className="block py-2 text-gray-700">Blog</a>
-              <a href="/resources/webinars" className="block py-2 text-gray-700">Webinars</a>
-              <a href="/contact" className="block py-2 text-gray-700">Contact</a>
-              <a href="/about" className="block py-2 text-gray-700">About</a>
-              <a href="/contact" className="block py-2 text-white bg-purple-600 rounded-full font-semibold text-center">Get Started</a>
+
+        {/* Mobile Search Dropdown */}
+        {isSearchOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+            <div className="px-4 py-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search services, markets, insights..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  autoFocus
+                />
+              </div>
             </div>
           </div>
         )}
+
+        {/* Mobile Navigation */}
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen 
+            ? 'max-h-[80vh] opacity-100' 
+            : 'max-h-0 opacity-0'
+        }`}>
+          <div className="bg-white border-t border-gray-100 shadow-lg">
+            <div className="max-h-[70vh] overflow-y-auto">
+              <div className="px-4 py-6 space-y-4">
+                {/* Mobile Search */}
+                <div className="relative mb-4">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  />
+                </div>
+
+                {/* Mobile Expertise */}
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Expertise</h3>
+                  <div className="space-y-1">
+                    {services.map((service, index) => (
+                      <a
+                        key={index}
+                        href={service.href}
+                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <service.icon className="w-5 h-5 mr-3 text-purple-600 flex-shrink-0" />
+                        <span className="font-medium text-sm">{service.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile Markets */}
+                <div className="space-y-1 pt-4 border-t border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Markets</h3>
+                  <div className="space-y-1">
+                    {industries.map((industry, index) => (
+                      <a
+                        key={index}
+                        href={industry.href}
+                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-200 active:bg-blue-100"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <industry.icon className="w-5 h-5 mr-3 text-blue-600 flex-shrink-0" />
+                        <span className="font-medium text-sm">{industry.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile Insights */}
+                <div className="space-y-1 pt-4 border-t border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Insights</h3>
+                  <div className="space-y-1">
+                    {resources.map((resource, index) => (
+                      <a
+                        key={index}
+                        href={resource.href}
+                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
+                        <span className="font-medium text-sm">{resource.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mobile Who We Are */}
+                <div className="pt-4 border-t border-gray-100">
+                  <a 
+                    href="/about" 
+                    className="block px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg font-medium transition-all duration-200 active:bg-purple-100"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Who We Are
+                  </a>
+                </div>
+
+                {/* Mobile CTA */}
+                <div className="pt-4 pb-2">
+                  <a 
+                    href="/contact" 
+                    className="block w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-center shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Get Started
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[88vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* Primary Background Video */}
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.7)" }}
-          >
-            <source src="/hero_bg.mp4" type="video/mp4" />
-          </video>
+          {/* Video Container with Smooth Transitions */}
+          <div className="relative w-full h-full">
+            {videoContent.map((content, index) => (
+              <div
+                key={content.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  index === currentVideoIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <video
+                  key={`video-${content.id}-${currentVideoIndex}`} // Force re-render for proper looping
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover"
+                  style={{ filter: "brightness(0.7)" }}
+                  onLoadedData={(e) => {
+                    // Ensure video plays when loaded
+                    const video = e.target as HTMLVideoElement;
+                    video.play().catch(console.error);
+                  }}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                >
+                  <source src={content.videoSrc} type="video/mp4" />
+                </video>
+                
+                {/* Dynamic Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${content.overlayStyle} pointer-events-none`}></div>
+              </div>
+            ))}
+          </div>
+          
           {/* Fallback Image if video fails to load */}
           <noscript>
             <img src="/modern-data-center.png" alt="Fallback" className="w-full h-full object-cover" />
           </noscript>
-          {/* Enhanced Gradient Overlay with Animation */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/80 via-pink-500/70 to-purple-700/80 animate-pulse pointer-events-none"></div>
+          
           {/* Animated Particles Effect */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-ping"></div>
@@ -147,21 +596,31 @@ export default function OrbitzTechnologyHomePage() {
           </div>
         </div>
 
+        {/* Dynamic Content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <div className="animate-fade-in-up">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
-              <span className="block bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent">
-                One partner.
+              <span 
+                key={`line1-${currentVideoIndex}`}
+                className="block bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent animate-fade-in-up"
+              >
+                {videoContent[currentVideoIndex].title.line1}
               </span>
-              <span className="block bg-gradient-to-r from-pink-100 via-white to-purple-100 bg-clip-text text-transparent">
-                Infinite possibilities.
+              <span 
+                key={`line2-${currentVideoIndex}`}
+                className="block bg-gradient-to-r from-pink-100 via-white to-purple-100 bg-clip-text text-transparent animate-fade-in-up animation-delay-200"
+              >
+                {videoContent[currentVideoIndex].title.line2}
               </span>
             </h1>
           </div>
 
           <div className="animate-fade-in-up animation-delay-500">
-            <p className="text-base md:text-lg mb-8 text-white/95 max-w-2xl mx-auto leading-relaxed font-light">
-              Custom IT Solutions for Business Growth & Success. Every business is unique, so Orbitz Technology creates tailored IT strategies that grow with your business.
+            <p 
+              key={`desc-${currentVideoIndex}`}
+              className="text-base md:text-lg mb-8 text-white/95 max-w-3xl mx-auto leading-relaxed font-light animate-fade-in-up"
+            >
+              {videoContent[currentVideoIndex].description}
             </p>
           </div>
 
@@ -170,9 +629,15 @@ export default function OrbitzTechnologyHomePage() {
               <Button
                 size="lg"
                 className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-white/20 hover:scale-105 transform"
-                onClick={() => (window.location.href = "/about")}
+                onClick={() => {
+                  if (currentVideoIndex === 0) {
+                    window.location.href = "/services"
+                  } else {
+                    window.location.href = "/services/ai-development"
+                  }
+                }}
               >
-                Discover our capabilities
+                {videoContent[currentVideoIndex].primaryButton}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button
@@ -180,15 +645,25 @@ export default function OrbitzTechnologyHomePage() {
                 className="bg-white text-purple-600 hover:bg-purple-50 hover:text-purple-700 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transform"
                 onClick={() => (window.location.href = "/contact")}
               >
-                Get Started
+                {videoContent[currentVideoIndex].secondaryButton}
                 <Phone className="w-5 h-5 ml-2" />
               </Button>
             </div>
           </div>
+
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <div className="flex flex-col items-center cursor-pointer hover:scale-110 transition-transform">
+        {/* Scroll Indicator */}
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
+          onClick={() => {
+            const nextSection = document.querySelector('section:nth-of-type(2)');
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <div className="flex flex-col items-center hover:scale-110 transition-transform">
             <span className="text-sm mb-3 font-medium tracking-wider uppercase">Explore</span>
             <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
@@ -197,85 +672,58 @@ export default function OrbitzTechnologyHomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-purple-700 via-pink-600 to-purple-400 bg-clip-text text-transparent drop-shadow-lg tracking-tight">
-              Client Success Stories
-            </h2>
-            <p className="text-lg md:text-2xl text-gray-700 font-medium mb-2 max-w-2xl mx-auto">
-              <span className="inline-block px-4 py-2 rounded-full bg-purple-50 text-purple-700 font-semibold shadow-sm">Real results. Real impact.</span>
-              <br />
-              <span className="block mt-2">See how we've helped businesses achieve measurable growth and transformation.</span>
+      {/* Solutions Overview Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Top Text */}
+          <div className="text-center mb-20">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto font-medium">
+              As the leading Solutions Integrator, our experts solve our clients' technology challenges by combining the right hardware, software, and services.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center mr-4">
-                    {/* Professional Healthcare Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" /></svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <h4 className="font-semibold text-gray-900">HealthCare Plus</h4>
-                    <p className="text-sm text-gray-600">Healthcare Provider</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-700 mb-6 italic">
-                  "Orbitz Technology transformed our patient management system, reducing appointment scheduling time by 75% and improving patient satisfaction scores significantly."
-                </blockquote>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>HIPAA Compliance Achieved</span>
-                  <span className="text-green-600 font-semibold">+75% Efficiency</span>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Column - Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-8">
+                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                SOLUTIONS
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                See and surpass<br />
+                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  what's possible
+                </span>
+              </h2>
+            </div>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center mr-4">
-                    {/* Professional Finance Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 16v-4" /></svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <h4 className="font-semibold text-gray-900">Financial Solutions Inc</h4>
-                    <p className="text-sm text-gray-600">Financial Services</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-700 mb-6 italic">
-                  "Their cybersecurity implementation saved us from potential breaches and ensured PCI DSS compliance. Our clients trust us more than ever."
-                </blockquote>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Zero Security Incidents</span>
-                  <span className="text-blue-600 font-semibold">100% Compliance</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center mr-4">
-                    {/* Professional Real Estate Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10l9-7 9 7v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8z" /></svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <h4 className="font-semibold text-gray-900">RealEstate Pro</h4>
-                    <p className="text-sm text-gray-600">Real Estate</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-700 mb-6 italic">
-                  "The custom CRM system they built increased our lead conversion rate by 60% and streamlined our entire sales process."
-                </blockquote>
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>Custom CRM Solution</span>
-                  <span className="text-purple-600 font-semibold">+60% Conversions</span>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Right Column - Description */}
+            <div className="space-y-6">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                By blending the right technologies and strategies, we empower businesses to simplify complexity and drive success.
+              </p>
+              
+              <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                Go beyond the expected. Discover the full scope of our AI and technology expertise.
+              </p>
+              
+              <p className="text-base text-gray-600 leading-relaxed">
+                We partner with you to identify the right strategies, tools, and solutions that drive innovation, efficiency, and sustainable growth. From software development to IT management, we help businesses modernize, stay competitive, and reach their boldest technology ambitions. Leading organizations across industries choose us to turn vision into reality.
+              </p>
+            </div>
+          </div>
+          
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300"
+              onClick={() => (window.location.href = "/services")}
+            >
+              Explore Our Solutions
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
           </div>
         </div>
       </section>
@@ -1126,6 +1574,9 @@ export default function OrbitzTechnologyHomePage() {
           </div>
         </div>
       </footer>
+
+      {/* AI Chatbot */}
+      <Chatbot whatsappNumber="+13196104889" />
     </div>
   )
 }
