@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import Chatbot from "@/components/chatbot"
 import {
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Search,
   Menu,
   X,
@@ -40,8 +42,6 @@ export default function OrbitzTechnologyHomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -143,11 +143,11 @@ export default function OrbitzTechnologyHomePage() {
   }
 
   const services = [
-    { name: "Technology Advisory", href: "/services/technology-advisory", icon: Users, desc: "Strategic technology guidance" },
-    { name: "AI Development Solutions", href: "/services/ai-development", icon: Code, desc: "Artificial intelligence solutions" },
-    { name: "Software Development", href: "/services/software-development", icon: Laptop, desc: "Custom software solutions" },
-    { name: "Cyber Security", href: "/services/cybersecurity", icon: Shield, desc: "Advanced security solutions" },
-    { name: "Managed IT Services", href: "/services/managed-it", icon: Cloud, desc: "24/7 IT support and management" },
+  { name: "Managed IT Services", href: "/services/managed-it", icon: Cloud, desc: "24/7 IT support and management" },
+  { name: "Software Development", href: "/services/software-development", icon: Laptop, desc: "Custom software solutions" },
+  { name: "Technology Advisory", href: "/services/technology-advisory", icon: Users, desc: "Strategic technology guidance" },
+  { name: "AI Development", href: "/services/ai-development", icon: Code, desc: "Artificial intelligence solutions" },
+  { name: "Cyber Security", href: "/services/cybersecurity", icon: Shield, desc: "Advanced security solutions" },
   ]
 
   const industries = [
@@ -160,389 +160,22 @@ export default function OrbitzTechnologyHomePage() {
   ]
 
   const resources = [
-    { name: "Case Studies", href: "/resources/case-studies", icon: FileText, desc: "Success stories and outcomes" },
-    { name: "Whitepapers", href: "/resources/whitepapers", icon: BookOpen, desc: "In-depth technical insights" },
-    { name: "Blog", href: "/resources/blog", icon: Presentation, desc: "Latest technology trends" },
-    { name: "Webinars", href: "/resources/webinars", icon: Video, desc: "Educational sessions" },
+    { 
+      name: "Case Studies", 
+      href: "#case-studies", 
+      icon: FileText,
+      action: () => {
+        const caseStudiesSection = document.getElementById('case-studies-section');
+        if (caseStudiesSection) {
+          caseStudiesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    },
+    { name: "Blog", href: "https://orbitztechnology.com/blog", icon: Presentation },
   ]
 
   return (
     <div className="min-h-screen bg-white">
-
-      {/* Navigation */}
-      <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100' 
-          : 'bg-white shadow-sm'
-      }`}>
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <div className="flex items-center">
-              <a href="/" className="flex items-center space-x-3 group">
-                <div className="relative">
-                  <img 
-                    src="/logo2.png" 
-                    alt="Orbitz Technology Logo" 
-                    className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-105" 
-                    style={{
-                      background: 'white', 
-                      borderRadius: '10px', 
-                      padding: '3px', 
-                      border: '2px solid #7c3aed',
-                      boxShadow: '0 4px 12px rgba(124, 58, 237, 0.15)'
-                    }} 
-                  />
-                </div>
-                <span className="text-xl lg:text-2xl font-bold text-gray-900 tracking-tight group-hover:text-purple-700 transition-colors duration-300">
-                  Orbitz Technology
-                </span>
-              </a>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {/* Expertise Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter('services')}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
-                  <span>Expertise</span>
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === 'services' ? 'rotate-180' : ''
-                  }`} />
-                </button>
-                
-                {/* Mega Menu */}
-                <div className={`absolute left-0 top-full mt-2 w-96 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
-                  activeDropdown === 'services' 
-                    ? 'opacity-100 visible transform translate-y-0' 
-                    : 'opacity-0 invisible transform -translate-y-2'
-                }`}>
-                  <div className="p-6">
-                    <div className="grid gap-3">
-                      {services.map((service, index) => (
-                        <a
-                          key={index}
-                          href={service.href}
-                          className="flex items-start p-3 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
-                        >
-                          <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-200">
-                            <service.icon className="w-5 h-5 text-purple-600" />
-                          </div>
-                          <div className="ml-3">
-                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">
-                              {service.name}
-                            </h3>
-                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                              {service.desc}
-                            </p>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Markets Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter('industries')}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
-                  <span>Markets</span>
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === 'industries' ? 'rotate-180' : ''
-                  }`} />
-                </button>
-                
-                <div className={`absolute left-0 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
-                  activeDropdown === 'industries' 
-                    ? 'opacity-100 visible transform translate-y-0' 
-                    : 'opacity-0 invisible transform -translate-y-2'
-                }`}>
-                  <div className="p-6">
-                    <div className="grid gap-3">
-                      {industries.map((industry, index) => (
-                        <a
-                          key={index}
-                          href={industry.href}
-                          className="flex items-start p-3 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
-                        >
-                          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
-                            <industry.icon className="w-5 h-5 text-blue-600" />
-                          </div>
-                          <div className="ml-3">
-                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
-                              {industry.name}
-                            </h3>
-                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                              {industry.desc}
-                            </p>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Insights Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => handleDropdownEnter('resources')}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button className="flex items-center px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group">
-                  <span>Insights</span>
-                  <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                    activeDropdown === 'resources' ? 'rotate-180' : ''
-                  }`} />
-                </button>
-                
-                <div className={`absolute left-0 top-full mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 ${
-                  activeDropdown === 'resources' 
-                    ? 'opacity-100 visible transform translate-y-0' 
-                    : 'opacity-0 invisible transform -translate-y-2'
-                }`}>
-                  <div className="p-6">
-                    <div className="grid gap-3">
-                      {resources.map((resource, index) => (
-                        <a
-                          key={index}
-                          href={resource.href}
-                          className="flex items-start p-3 rounded-lg hover:bg-green-50 transition-all duration-200 group"
-                        >
-                          <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
-                            <resource.icon className="w-5 h-5 text-green-600" />
-                          </div>
-                          <div className="ml-3">
-                            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-                              {resource.name}
-                            </h3>
-                            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-                              {resource.desc}
-                            </p>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Who We Are */}
-              <a 
-                href="/about" 
-                className="px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50"
-              >
-                Who We Are
-              </a>
-            </div>
-
-            {/* Right Side Actions */}
-            <div className="hidden lg:flex items-center space-x-4">
-              {/* Search */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className="p-2 text-gray-600 hover:text-purple-600 rounded-lg hover:bg-purple-50 transition-all duration-200"
-                >
-                  <Search className="w-5 h-5" />
-                </button>
-                
-                {/* Search Dropdown */}
-                {isSearchOpen && (
-                  <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 p-4">
-                    <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Search services, industries, resources..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                        autoFocus
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* CTA Button */}
-              <a 
-                href="/contact" 
-                className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-              >
-                Get Started
-              </a>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center space-x-3">
-              {/* Mobile Search Icon */}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setIsSearchOpen(!isSearchOpen)
-                  setIsMenuOpen(false) // Close menu when search opens
-                }} 
-                className="p-2.5 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-30"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5 text-gray-700" />
-              </button>
-              
-              {/* Mobile Menu Toggle */}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setIsMenuOpen(!isMenuOpen)
-                  setIsSearchOpen(false) // Close search when menu opens
-                }} 
-                className="p-2.5 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-30"
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              >
-                <div className="w-6 h-6 relative flex flex-col justify-center">
-                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
-                    isMenuOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1.5'
-                  }`}></span>
-                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
-                    isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-                  }`}></span>
-                  <span className={`block w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ease-in-out ${
-                    isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1.5'
-                  }`}></span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Search Dropdown */}
-        {isSearchOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
-            <div className="px-4 py-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search services, markets, insights..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  autoFocus
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen 
-            ? 'max-h-[80vh] opacity-100' 
-            : 'max-h-0 opacity-0'
-        }`}>
-          <div className="bg-white border-t border-gray-100 shadow-lg">
-            <div className="max-h-[70vh] overflow-y-auto">
-              <div className="px-4 py-6 space-y-4">
-                {/* Mobile Search */}
-                <div className="relative mb-4">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  />
-                </div>
-
-                {/* Mobile Expertise */}
-                <div className="space-y-1">
-                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Expertise</h3>
-                  <div className="space-y-1">
-                    {services.map((service, index) => (
-                      <a
-                        key={index}
-                        href={service.href}
-                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <service.icon className="w-5 h-5 mr-3 text-purple-600 flex-shrink-0" />
-                        <span className="font-medium text-sm">{service.name}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mobile Markets */}
-                <div className="space-y-1 pt-4 border-t border-gray-100">
-                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Markets</h3>
-                  <div className="space-y-1">
-                    {industries.map((industry, index) => (
-                      <a
-                        key={index}
-                        href={industry.href}
-                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-200 active:bg-blue-100"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <industry.icon className="w-5 h-5 mr-3 text-blue-600 flex-shrink-0" />
-                        <span className="font-medium text-sm">{industry.name}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mobile Insights */}
-                <div className="space-y-1 pt-4 border-t border-gray-100">
-                  <h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Insights</h3>
-                  <div className="space-y-1">
-                    {resources.map((resource, index) => (
-                      <a
-                        key={index}
-                        href={resource.href}
-                        className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
-                        <span className="font-medium text-sm">{resource.name}</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mobile Who We Are */}
-                <div className="pt-4 border-t border-gray-100">
-                  <a 
-                    href="/about" 
-                    className="block px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg font-medium transition-all duration-200 active:bg-purple-100"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Who We Are
-                  </a>
-                </div>
-
-                {/* Mobile CTA */}
-                <div className="pt-4 pb-2">
-                  <a 
-                    href="/contact" 
-                    className="block w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-center shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Get Started
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className="relative h-[88vh] flex items-center justify-center overflow-hidden">
@@ -552,21 +185,20 @@ export default function OrbitzTechnologyHomePage() {
             {videoContent.map((content, index) => (
               <div
                 key={content.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentVideoIndex ? 'opacity-100' : 'opacity-0'
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  index === currentVideoIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                 }`}
               >
                 <video
-                  key={`video-${content.id}-${currentVideoIndex}`} // Force re-render for proper looping
+                  key={`video-${content.id}-${currentVideoIndex}`}
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="auto"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-1000"
                   style={{ filter: "brightness(0.7)" }}
                   onLoadedData={(e) => {
-                    // Ensure video plays when loaded
                     const video = e.target as HTMLVideoElement;
                     video.play().catch(console.error);
                   }}
@@ -576,59 +208,55 @@ export default function OrbitzTechnologyHomePage() {
                   <source src={content.videoSrc} type="video/mp4" />
                 </video>
                 
-                {/* Dynamic Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${content.overlayStyle} pointer-events-none`}></div>
+                {/* Dynamic Gradient Overlay with enhanced animation */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${content.overlayStyle} pointer-events-none animate-pulse-glow`}></div>
               </div>
             ))}
           </div>
           
-          {/* Fallback Image if video fails to load */}
-          <noscript>
-            <img src="/modern-data-center.png" alt="Fallback" className="w-full h-full object-cover" />
-          </noscript>
-          
-          {/* Animated Particles Effect */}
+          {/* Enhanced Animated Particles Effect */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-ping"></div>
-            <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white/40 rounded-full animate-ping animation-delay-1000"></div>
-            <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-white/20 rounded-full animate-ping animation-delay-2000"></div>
-            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/50 rounded-full animate-ping animation-delay-3000"></div>
+            <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-white/40 rounded-full animate-bounce-in animation-delay-100"></div>
+            <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-white/50 rounded-full animate-bounce-in animation-delay-300"></div>
+            <div className="absolute top-1/2 left-3/4 w-2.5 h-2.5 bg-white/30 rounded-full animate-bounce-in animation-delay-500"></div>
+            <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce-in animation-delay-700"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/35 rounded-full animate-bounce-in animation-delay-800"></div>
           </div>
         </div>
 
-        {/* Dynamic Content */}
+        {/* Dynamic Content with enhanced animations */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <div className="animate-fade-in-up">
+          <div className="animate-slide-in-bottom">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
               <span 
                 key={`line1-${currentVideoIndex}`}
-                className="block bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent animate-fade-in-up"
+                className="block bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent animate-text-reveal"
               >
                 {videoContent[currentVideoIndex].title.line1}
               </span>
               <span 
                 key={`line2-${currentVideoIndex}`}
-                className="block bg-gradient-to-r from-pink-100 via-white to-purple-100 bg-clip-text text-transparent animate-fade-in-up animation-delay-200"
+                className="block bg-gradient-to-r from-pink-100 via-white to-purple-100 bg-clip-text text-transparent animate-text-reveal animation-delay-200"
               >
                 {videoContent[currentVideoIndex].title.line2}
               </span>
             </h1>
           </div>
 
-          <div className="animate-fade-in-up animation-delay-500">
+          <div className="animate-fade-in-scale animation-delay-400">
             <p 
               key={`desc-${currentVideoIndex}`}
-              className="text-base md:text-lg mb-8 text-white/95 max-w-3xl mx-auto leading-relaxed font-light animate-fade-in-up"
+              className="text-base md:text-lg mb-8 text-white/95 max-w-3xl mx-auto leading-relaxed font-light animate-slide-in-bottom animation-delay-500"
             >
               {videoContent[currentVideoIndex].description}
             </p>
           </div>
 
-          <div className="animate-fade-in-up animation-delay-1000">
+          <div className="animate-slide-in-bottom animation-delay-700">
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-white/20 hover:scale-105 transform"
+                className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-white/20 hover:scale-105 transform hover-lift group"
                 onClick={() => {
                   if (currentVideoIndex === 0) {
                     window.location.href = "/services"
@@ -673,111 +301,600 @@ export default function OrbitzTechnologyHomePage() {
       </section>
 
       {/* Solutions Overview Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Top Text */}
-          <div className="text-center mb-20">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto font-medium">
-              As the leading Solutions Integrator, our experts solve our clients' technology challenges by combining the right hardware, software, and services.
-            </p>
+      <section className="relative py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden">
+        {/* Simplified Background Elements */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-3"></div>
+        <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        
+        <div className="relative max-w-6xl mx-auto px-4">
+          {/* Compact Top Section */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-purple-200 text-purple-700 rounded-full text-sm font-semibold mb-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
+              SOLUTIONS INTEGRATOR
+            </div>
+            <h1 className="text-xl md:text-2xl text-gray-800 leading-relaxed max-w-3xl mx-auto font-medium animate-fade-in-up">
+              As the leading Solutions Integrator, our experts solve our clients' technology challenges by combining the right 
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-semibold"> hardware, software, and services</span>.
+            </h1>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-8">
-                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Streamlined Content */}
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-bold mb-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                 SOLUTIONS
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animation-delay-200">
                 See and surpass<br />
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 bg-clip-text text-transparent animate-gradient-x">
                   what's possible
                 </span>
               </h2>
+
+              {/* Simplified Feature highlights */}
+              <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">Expert Solutions</p>
+                    <p className="text-xs text-gray-600">Tailored Technology</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 animation-delay-200">
+                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">Proven Results</p>
+                    <p className="text-xs text-gray-600">Industry Leaders</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column - Description */}
-            <div className="space-y-6">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                By blending the right technologies and strategies, we empower businesses to simplify complexity and drive success.
-              </p>
+            {/* Right Column - Simplified Description */}
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 animate-fade-in-up animation-delay-500">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Empowering Business Success</h3>
               
-              <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                Go beyond the expected. Discover the full scope of our AI and technology expertise.
-              </p>
-              
-              <p className="text-base text-gray-600 leading-relaxed">
-                We partner with you to identify the right strategies, tools, and solutions that drive innovation, efficiency, and sustainable growth. From software development to IT management, we help businesses modernize, stay competitive, and reach their boldest technology ambitions. Leading organizations across industries choose us to turn vision into reality.
-              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3 group">
+                  <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300">
+                    <ArrowRight className="w-3 h-3 text-white" />
+                  </div>
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    By blending the right technologies and strategies, we empower businesses to <strong>simplify complexity and drive success</strong>.
+                  </p>
+                </div>
+                
+                <div className="flex items-start gap-3 group">
+                  <div className="w-6 h-6 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300">
+                    <ArrowRight className="w-3 h-3 text-white" />
+                  </div>
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    Go beyond the expected. Discover the full scope of our <span className="text-purple-600 font-medium">AI and technology expertise</span>.
+                  </p>
+                </div>
+                
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-100">
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    We partner with you to identify the right strategies, tools, and solutions that drive innovation, efficiency, and sustainable growth.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          
-          {/* Call to Action */}
-          <div className="text-center mt-16">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300"
-              onClick={() => (window.location.href = "/services")}
-            >
-              Explore Our Solutions
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Our Partners Section */}
-      <section className="py-16 bg-white">
+      {/* IT Capabilities Section - Moved from below */}
+      <section id="services" className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Partners</h2>
-            <p className="text-xl text-gray-600">Trusted by industry leaders and innovators</p>
+          <div className="text-center mb-12 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">IT Capabilities That Power Your Business</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300">
+              We provide comprehensive technology solutions that drive digital transformation and business growth.
+            </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 justify-items-center items-center">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {/* Technology Advisory */}
+            <Card className="group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-0 bg-gradient-to-br from-blue-50 to-indigo-50 h-full animate-slideInFromLeft delay-400 hover-lift">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-bounceIn delay-500">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-600">Technology Advisory</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow animate-slideInFromBottom delay-700">
+                  We help businesses improve operations through tailored software solutions aligned with business goals and technical capacity.
+                </p>
+                <ul className="text-xs text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Implementation Strategy</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Technology Advisory</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Business Consulting</span>
+                  </li>
+                </ul>
+                <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* AI Development */}
+            <Card className="group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-0 bg-gradient-to-br from-purple-50 to-pink-50 h-full animate-slideInFromBottom delay-500 hover-lift">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-bounceIn delay-600">
+                    <Code className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-700">AI Development</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow animate-slideInFromBottom delay-800">
+                  Custom-built AI solutions with advanced machine learning models and NLP systems for actionable insights and smarter decisions.
+                </p>
+                <ul className="text-xs text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>AI Assistants & Chatbots</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Custom LLMs</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>NLP Solutions</span>
+                  </li>
+                </ul>
+                <Button variant="ghost" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Software Development */}
+            <Card className="group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-0 bg-gradient-to-br from-green-50 to-emerald-50 h-full animate-slideInFromLeft delay-600 hover-lift">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-bounceIn delay-700">
+                    <Laptop className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-800">Software Development</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow animate-slideInFromBottom delay-800">
+                  Full-cycle software development for enterprises, SMBs, and startups, backed by 20+ years of expertise and innovation.
+                </p>
+                <ul className="text-xs text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Custom Development</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Platform Implementation</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>App Modernization</span>
+                  </li>
+                </ul>
+                <Button variant="ghost" className="text-green-600 hover:text-green-700 hover:bg-green-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Cyber Security */}
+            <Card className="group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-0 bg-gradient-to-br from-red-50 to-orange-50 h-full animate-slideInFromBottom delay-700 hover-lift">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-bounceIn delay-800">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-800">Cyber Security</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow animate-slideInFromBottom delay-800">
+                  Comprehensive cybersecurity services protecting organizational IT assets and building resilient digital ecosystems.
+                </p>
+                <ul className="text-xs text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Software Security</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Network Monitoring</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Infrastructure Protection</span>
+                  </li>
+                </ul>
+                <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Managed IT Services */}
+            <Card className="group hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border-0 bg-gradient-to-br from-cyan-50 to-blue-50 h-full animate-slideInFromRight delay-800 hover-lift">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex flex-col items-center text-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 animate-bounceIn delay-800">
+                    <Cloud className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-800">Managed IT Services</h3>
+                </div>
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow animate-slideInFromBottom delay-800">
+                  Comprehensive managed IT services optimizing environments by integrating specialists with in-house teams.
+                </p>
+                <ul className="text-xs text-gray-600 space-y-2 mb-6">
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Software Management</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>Infrastructure Management</span>
+                  </li>
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                      <CheckCircle className="w-3 h-3 text-green-600" />
+                    </div>
+                    <span>24/7 Monitoring</span>
+                  </li>
+                </ul>
+                <Button variant="ghost" className="text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                  Learn More 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Partners Section - Moved below IT Capabilities */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Our Partners</h2>
+            <p className="text-xl text-gray-600 animate-fadeInScale delay-300">Trusted by industry leaders and innovators</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center items-center">
+            {/* AWS */}
+            <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromLeft delay-400">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
+                <img src="/aws.png" alt="AWS" className="max-h-12 max-w-full object-contain animate-bounceIn delay-500" />
+              </div>
+              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-600">AWS</span>
+            </a>
             {/* Insight */}
-            <a href="https://www.insight.com/en_US/home.html" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/insight-logo.png" alt="Insight" className="max-h-12 max-w-full object-contain" />
+            <a href="https://www.insight.com/en_US/home.html" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromBottom delay-500">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
+                <img src="/insight-logo.png" alt="Insight" className="max-h-12 max-w-full object-contain animate-bounceIn delay-600" />
               </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">Insight</span>
+              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-700">Insight</span>
             </a>
-            {/* Privacy Evolved */}
-            <a href="https://www.privacyevolved.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/privacy-evolved-logo.png" alt="Privacy Evolved" className="max-h-12 max-w-full object-contain" />
+            {/* Microsoft */}
+            <a href="https://www.microsoft.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromLeft delay-600">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
+                <img src="/microsoft.png" alt="Microsoft" className="max-h-12 max-w-full object-contain animate-bounceIn delay-700" />
               </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">Privacy Evolved</span>
-            </a>
-            {/* CMIT Solutions */}
-            <a href="https://cmitsolutions.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/cmit-logo.png" alt="CMIT Solutions" className="max-h-12 max-w-full object-contain" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">CMIT Solutions</span>
-            </a>
-            {/* NexusTek */}
-            <a href="https://www.nexustek.com/managed-it-services" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/nexustek-logo.png" alt="NexusTek" className="max-h-12 max-w-full object-contain" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">NexusTek</span>
-            </a>
-            {/* Growexx */}
-            <a href="https://www.growexx.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/growexx-logo.png" alt="Growexx" className="max-h-12 max-w-full object-contain" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">Growexx</span>
+              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Microsoft</span>
             </a>
             {/* Weave */}
-            <a href="https://www.getweave.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all">
-                <img src="/weave-logo.png" alt="Weave" className="max-h-12 max-w-full object-contain" />
+            <a href="https://www.getweave.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromBottom delay-700">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
+                <img src="/weave-logo.png" alt="Weave" className="max-h-12 max-w-full object-contain animate-bounceIn delay-800" />
               </div>
-              <span className="text-gray-800 font-semibold text-base mt-1">Weave</span>
+              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Weave</span>
             </a>
+            {/* Google */}
+            <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromRight delay-800">
+              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
+                <img src="/google.png" alt="Google" className="max-h-12 max-w-full object-contain animate-bounceIn delay-800" />
+              </div>
+              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Google</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section - Slalom Inspired Design */}
+      <section id="case-studies-section" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Success Stories & Insights</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300">Discover how we've helped businesses transform with cutting-edge technology solutions</p>
+          </div>
+          
+          {/* Horizontal Scrollable Case Studies with Image Focus */}
+          <div className="relative animate-slideInFromLeft delay-400">
+            <div className="overflow-x-auto scrollbar-hide">
+              <div className="flex space-x-8 pb-6" style={{ width: 'max-content' }}>
+                
+                {/* Case Study 1 - Financial Services CRM */}
+                <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer animate-slideInFromLeft delay-500 hover-lift"
+                     onClick={() => (window.location.href = "/resources/case-studies")}>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src="/business-success.png" 
+                      alt="Financial Services CRM Transformation" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 animate-fadeInScale delay-600"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-blue-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold animate-bounceIn delay-700">CASE STUDY</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-blue-300 text-sm font-medium mb-2 block animate-slideInFromBottom delay-800">Financial Services</span>
+                      <h3 className="text-white text-xl font-bold leading-tight animate-text-reveal delay-800">CRM Cloud Migration with AI Integration</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4 animate-fadeInScale delay-800">
+                      Complete transformation from on-premise Microsoft Dynamics CRM to Dynamics 365 Online with AI-powered Copilot implementation, delivering enhanced customer insights and streamlined operations.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600">AI Ready</div>
+                          <div className="text-xs text-gray-500">Platform</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">40%</div>
+                          <div className="text-xs text-gray-500">Efficiency</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-blue-600 text-sm font-semibold group-hover:text-blue-700 transition-colors">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Case Study 2 - Technology Marketing */}
+                <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                     onClick={() => (window.location.href = "/resources/case-studies")}>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src="/ai-neural-network-data.png" 
+                      alt="Marketing Technology Transformation" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-purple-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">CASE STUDY</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-purple-300 text-sm font-medium mb-2 block">Technology</span>
+                      <h3 className="text-white text-xl font-bold leading-tight">Global Marketing Tech Transformation</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Revolutionized email marketing and ABM processes with Stensul and Folloze implementation, dramatically reducing campaign time-to-market and improving engagement rates.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-purple-600">50%</div>
+                          <div className="text-xs text-gray-500">Time Saved</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">3x</div>
+                          <div className="text-xs text-gray-500">ROI</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-purple-600 text-sm font-semibold group-hover:text-purple-700 transition-colors">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Case Study 3 - Commercial Real Estate */}
+                <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                     onClick={() => (window.location.href = "/resources/case-studies")}>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src="/modern-office-colorful-lighting.png" 
+                      alt="Real Estate CRM Transformation" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-green-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">CASE STUDY</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-green-300 text-sm font-medium mb-2 block">Real Estate</span>
+                      <h3 className="text-white text-xl font-bold leading-tight">CRM Cloud Transformation</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Seamless migration of Dynamics CRM to cloud with custom application development for Americas Markets Teams, featuring PeopleSoft integration and enhanced workflow automation.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">Enhanced</div>
+                          <div className="text-xs text-gray-500">Workflow</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600">Cloud</div>
+                          <div className="text-xs text-gray-500">Ready</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-green-600 text-sm font-semibold group-hover:text-green-700 transition-colors">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Case Study 4 - Heavy Equipment Industry */}
+                <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                     onClick={() => (window.location.href = "/resources/case-studies")}>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src="/modern-data-center.png" 
+                      alt="Heavy Equipment CRM & Service Cloud" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-orange-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">CASE STUDY</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-orange-300 text-sm font-medium mb-2 block">Manufacturing</span>
+                      <h3 className="text-white text-xl font-bold leading-tight">CRM & Service Cloud Transformation</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Comprehensive CRM modernization and Service Cloud-based Call Center implementation for heavy equipment industry, achieving significant operational improvements and cost reductions.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-orange-600">20%</div>
+                          <div className="text-xs text-gray-500">Cost Saved</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600">Modern</div>
+                          <div className="text-xs text-gray-500">Platform</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-orange-600 text-sm font-semibold group-hover:text-orange-700 transition-colors">
+                        <span>Read more</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Blog Post 1 - Latest Insights */}
+                <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                     onClick={() => (window.location.href = "/resources/blog")}>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src="/practicee-ehr.png" 
+                      alt="AI in Healthcare" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-indigo-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">BLOG POST</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-indigo-300 text-sm font-medium mb-2 block">Healthcare Technology</span>
+                      <h3 className="text-white text-xl font-bold leading-tight">AI Revolution in Healthcare</h3>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Exploring how artificial intelligence is transforming patient care, streamlining operations, and revolutionizing healthcare delivery in the digital age.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-sm text-gray-500">5 min read</span>
+                        <span className="text-gray-300">•</span>
+                        <span className="text-sm text-gray-500">Jan 15, 2025</span>
+                      </div>
+                      <div className="flex items-center text-indigo-600 text-sm font-semibold group-hover:text-indigo-700 transition-colors">
+                        <span>Read article</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            {/* Enhanced Scroll Navigation */}
+            <div className="absolute top-1/2 -left-5 transform -translate-y-1/2 z-10">
+              <button className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:shadow-2xl border border-gray-100">
+                <ChevronLeft className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 -right-5 transform -translate-y-1/2 z-10">
+              <button className="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:shadow-2xl border border-gray-100">
+                <ChevronRight className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+          </div>
+
+          {/* Dual CTA Section */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => (window.location.href = "/resources/case-studies")}
+            >
+              View All Case Studies
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
+              onClick={() => (window.location.href = "/resources/blog")}
+            >
+              Read Latest Insights
+              <BookOpen className="w-5 h-5 ml-2" />
+            </Button>
           </div>
         </div>
       </section>
@@ -894,457 +1011,232 @@ export default function OrbitzTechnologyHomePage() {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section id="services" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">IT Capabilities That Power Your Business</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We provide comprehensive technology solutions that drive digital transformation and business growth.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Managed IT Services */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-pink-50">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 flex items-center justify-center mr-4">
-                    {/* Professional Shield Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l8 4v5c0 5.25-3.75 10-8 10s-8-4.75-8-10V7l8-4z" /></svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Managed IT Services</h3>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  We specialize in IT Support, Advanced Cybersecurity, Cloud and Software Architecture, and Provide
-                  Service & Proactive Issue Management.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    24/7 IT Support
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Cybersecurity & Compliance
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Cloud Management
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Disaster Recovery
-                  </li>
-                </ul>
-                <Button variant="ghost" className="text-purple-600 hover:text-purple-700 p-0">
-                  Get More <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Software Development */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-cyan-50">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 flex items-center justify-center mr-4">
-                    {/* Professional Code Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 18l6-6-6-6M8 6l-6 6 6 6" /></svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Software Development</h3>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Mobile apps (Android & iOS), custom software solutions (CRM, ERP, Marketing tools), AI bot
-                  integration, CRM platforms.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Mobile App Development
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Custom CRM/ERP Solutions
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    AI Bot Integration
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Marketing Tools
-                  </li>
-                </ul>
-                <Button variant="ghost" className="text-blue-600 hover:text-blue-700 p-0">
-                  Get More <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* IT Consulting */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-emerald-50">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-14 h-14 flex items-center justify-center mr-4">
-                    {/* Professional Consulting Icon */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-3-3.87M9 20h6M3 20h5v-2a4 4 0 013-3.87M16 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">IT Consulting</h3>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Project management, UI/UX design, business analysis, change management, quality testing, strategic
-                  planning.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2 mb-6">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Project Management
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    UI/UX Design
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Business Analysis
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Quality Testing
-                  </li>
-                </ul>
-                <Button variant="ghost" className="text-green-600 hover:text-green-700 p-0">
-                  Get More <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Premium Technology Solutions</h2>
-            <p className="text-xl text-purple-200">Advanced capabilities that set us apart from the competition</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Zero-Trust Security</h3>
-              <p className="text-gray-300">
-                Advanced security architecture that assumes no implicit trust and continuously validates every
-                transaction.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Code className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">AI-Powered Solutions</h3>
-              <p className="text-gray-300">
-                Intelligent automation and machine learning integration to optimize your business processes.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Globe className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Global Infrastructure</h3>
-              <p className="text-gray-300">
-                Worldwide cloud presence ensuring optimal performance and disaster recovery capabilities.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Award className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Industry Certifications</h3>
-              <p className="text-gray-300">
-                Certified professionals with expertise in the latest technologies and compliance standards.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section id="industries" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
-            <p className="text-xl text-gray-600">Specialized solutions for your industry with deep expertise</p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Healthcare",
-                icon: "🏥",
-                desc: "HIPAA-compliant solutions, EHR integration, telemedicine platforms",
-              },
-              {
-                name: "Financial & Insurance",
-                icon: "🏦",
-                desc: "Secure banking technology, compliance management, risk assessment",
-              },
-              { name: "Real Estate", icon: "🏢", desc: "Property management systems, CRM solutions, virtual tours" },
-              {
-                name: "Manufacturing",
-                icon: "🏭",
-                desc: "Industrial IoT, automation systems, supply chain management",
-              },
-              {
-                name: "Education",
-                icon: "🎓",
-                desc: "Learning management systems, student portals, virtual classrooms",
-              },
-              { name: "Dental", icon: "🦷", desc: "Practice management software, patient scheduling, digital records" },
-              { name: "Law Firms", icon: "⚖️", desc: "Case management solutions, document automation, client portals" },
-              {
-                name: "Small Business",
-                icon: "🏪",
-                desc: "Custom business solutions, workflow automation, growth tools",
-              },
-            ].map((industry, i) => (
-              <Card key={i} className="group hover:shadow-lg transition-all duration-300 text-center">
-                <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{industry.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{industry.name}</h3>
-                  <p className="text-sm text-gray-600">{industry.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Work Process Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Work Process</h2>
-            <p className="text-xl text-gray-600">A proven 4-step approach to deliver exceptional results</p>
+          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Our Work Process</h2>
+            <p className="text-xl text-gray-600 animate-fadeInScale delay-300">A proven 4-step approach to deliver exceptional results</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             {/* Step 1 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl">
+            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromLeft delay-400 hover-lift">
               <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-500 pulse-glow">
                   <span className="text-2xl font-bold text-white">01</span>
                 </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2">Select a Project</h3>
-                <p className="text-gray-600 text-base text-center">We work with you to identify the right technology solution for your business needs.</p>
+                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-600">Select a Project</h3>
+                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-700">We work with you to identify the right technology solution for your business needs.</p>
               </CardContent>
             </Card>
 
             {/* Step 2 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl">
+            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromBottom delay-500 hover-lift">
               <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-600 pulse-glow">
                   <span className="text-2xl font-bold text-white">02</span>
                 </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2">Project Analysis</h3>
-                <p className="text-gray-600 text-base text-center">Our experts analyze your requirements and create a comprehensive project plan.</p>
+                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-700">Project Analysis</h3>
+                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">Our experts analyze your requirements and create a comprehensive project plan.</p>
               </CardContent>
             </Card>
 
             {/* Step 3 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl">
+            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromBottom delay-600 hover-lift">
               <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-700 pulse-glow">
                   <span className="text-2xl font-bold text-white">03</span>
                 </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2">Plan & Execute</h3>
-                <p className="text-gray-600 text-base text-center">We implement the solution with careful planning and expert execution.</p>
+                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-800">Plan & Execute</h3>
+                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">We implement the solution with careful planning and expert execution.</p>
               </CardContent>
             </Card>
 
             {/* Step 4 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl">
+            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromRight delay-700 hover-lift">
               <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-800 pulse-glow">
                   <span className="text-2xl font-bold text-white">04</span>
                 </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2">Deliver Results</h3>
-                <p className="text-gray-600 text-base text-center">We deliver measurable results and provide ongoing support for your success.</p>
+                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-800">Deliver Results</h3>
+                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">We deliver measurable results and provide ongoing support for your success.</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">The Orbitz Technology Advantage</h2>
-            <p className="text-xl text-gray-600">Why industry leaders choose us as their technology partner</p>
+          <div className="text-center mb-12 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">What makes Orbitz Technology a top development company</h2>
+            <p className="text-xl text-gray-600 animate-fadeInScale delay-300">Why industry leaders choose us as their technology partner</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-purple-50 to-pink-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <Award className="w-8 h-8" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-pink-50 h-full animate-slideInFromLeft delay-400 hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3 animate-bounceIn delay-500">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 animate-fadeInScale delay-600">Business-First Philosophy</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Business-First Philosophy</h3>
-                <p className="text-gray-600 mb-4">
-                  We prioritize your business objectives over implementing technology for technology's sake. Our
-                  approach ensures every solution directly contributes to your bottom line and operational efficiency.
+                <p className="text-gray-600 mb-4 text-sm animate-slideInFromBottom delay-700">
+                  We prioritize your business objectives over implementing technology for technology's sake. Our approach ensures every solution directly contributes to your bottom line and operational efficiency.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                <ul className="text-xs text-gray-600 space-y-1">
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     ROI-focused implementations
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Stakeholder alignment process
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Measurable business outcomes
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-blue-50 to-cyan-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <Clock className="w-8 h-8" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-cyan-50 h-full animate-slideInFromBottom delay-500 hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3 animate-bounceIn delay-600">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 animate-fadeInScale delay-700">Proactive Excellence</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Proactive Excellence</h3>
-                <p className="text-gray-600 mb-4">
-                  Our proactive monitoring and maintenance approach prevents issues before they impact your business. We
-                  don't just fix problems—we prevent them from occurring.
+                <p className="text-gray-600 mb-4 text-sm animate-slideInFromBottom delay-800">
+                  Our proactive monitoring and maintenance approach prevents issues before they impact your business. We don't just fix problems—we prevent them from occurring.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                <ul className="text-xs text-gray-600 space-y-1">
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     24/7 system monitoring
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Predictive maintenance
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Automated issue resolution
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-green-50 to-emerald-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <Shield className="w-8 h-8" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-emerald-50 h-full animate-slideInFromRight delay-600 hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3 animate-bounceIn delay-700">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 animate-fadeInScale delay-800">Enterprise Security</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Enterprise Security</h3>
-                <p className="text-gray-600 mb-4">
-                  Comprehensive cybersecurity that goes beyond basic protection. We implement enterprise-grade security
-                  frameworks tailored to your industry's specific compliance requirements.
+                <p className="text-gray-600 mb-4 text-sm animate-slideInFromBottom delay-800">
+                  Comprehensive cybersecurity that goes beyond basic protection. We implement enterprise-grade security frameworks tailored to your industry's specific compliance requirements.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                <ul className="text-xs text-gray-600 space-y-1">
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Multi-layered security architecture
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Compliance automation
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromLeft delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Threat intelligence integration
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-orange-50 to-red-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <Users className="w-8 h-8" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-orange-50 to-red-50 h-full animate-slideInFromLeft delay-700 hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3 animate-bounceIn delay-800">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 animate-fadeInScale delay-800">Dedicated Partnership</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Dedicated Partnership</h3>
-                <p className="text-gray-600 mb-4">
-                  You're not just a client—you're a partner. Our dedicated account management ensures consistent
-                  communication and strategic alignment with your evolving business needs.
+                <p className="text-gray-600 mb-4 text-sm animate-slideInFromBottom delay-800">
+                  You're not just a client—you're a partner. Our dedicated account management ensures consistent communication and strategic alignment with your evolving business needs.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                <ul className="text-xs text-gray-600 space-y-1">
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Dedicated account manager
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Quarterly business reviews
                   </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                  <li className="flex items-center animate-slideInFromRight delay-800">
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Strategic technology roadmaps
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-purple-50 to-indigo-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <Globe className="w-8 h-8" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-indigo-50 h-full animate-slideInFromBottom delay-800 hover-lift">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3 animate-bounceIn delay-800">
+                    <Globe className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">Scalable Innovation</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Scalable Innovation</h3>
-                <p className="text-gray-600 mb-4">
-                  Our solutions are designed to scale with your growth. From startup to enterprise, our technology
-                  infrastructure adapts to your changing needs without disruption.
+                <p className="text-gray-600 mb-4 text-sm">
+                  Our solutions are designed to scale with your growth. From startup to enterprise, our technology infrastructure adapts to your changing needs without disruption.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
+                <ul className="text-xs text-gray-600 space-y-1">
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Elastic cloud architecture
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Modular system design
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Future-proof technology stack
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-teal-50 to-cyan-50">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform">
-                  <CheckCircle className="w-8 h-8" />
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-teal-50 to-cyan-50 h-full">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg flex items-center justify-center text-white group-hover:scale-110 transition-transform mr-3">
+                    <CheckCircle className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900">Proven Results</h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Proven Results</h3>
-                <p className="text-gray-600 mb-4">
-                  Our track record speaks for itself. With over 500 successful implementations and a 99.9% client
-                  satisfaction rate, we deliver measurable results that drive business growth.
+                <p className="text-gray-600 mb-4 text-sm">
+                  Our track record speaks for itself. With over 500 successful implementations and a 99.9% client satisfaction rate, we deliver measurable results that drive business growth.
                 </p>
-                <ul className="text-sm text-gray-600 space-y-2">
+                <ul className="text-xs text-gray-600 space-y-1">
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     500+ successful projects
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     99.9% client satisfaction
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                     Industry-leading uptime
                   </li>
                 </ul>
@@ -1357,105 +1249,170 @@ export default function OrbitzTechnologyHomePage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Cutting-Edge Technology Stack</h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-slide-in-bottom">Cutting-Edge Technology Stack</h2>
+            <p className="text-xl text-gray-600 animate-fade-in-scale animation-delay-200">
               We leverage the most advanced technologies to deliver superior solutions
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-5 gap-6 mb-16">
             {/* Cloud Platforms */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Cloud Platforms</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" className="w-8 h-8 object-contain" />
-                  <span className="text-blue-600 font-semibold">Microsoft Azure</span>
+            <div className="flex flex-col h-full animate-slide-in-left animation-delay-100">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Cloud Platforms</h3>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-100">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" className="w-8 h-8 object-contain hover-scale" />
+                  </div>
+                  <span className="text-blue-600 font-semibold text-sm">Microsoft Azure</span>
                 </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="AWS" className="w-8 h-8 object-contain" />
-                  <span className="text-blue-600 font-semibold">Amazon AWS</span>
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-200">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="AWS" className="w-8 h-8 object-contain hover-scale" />
+                  </div>
+                  <span className="text-blue-600 font-semibold text-sm">Amazon AWS</span>
                 </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" className="w-8 h-8 object-contain" />
-                  <span className="text-blue-600 font-semibold">Google Cloud</span>
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-300">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" className="w-8 h-8 object-contain hover-scale" />
+                  </div>
+                  <span className="text-blue-600 font-semibold text-sm">Google Cloud</span>
                 </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudflare.svg" alt="Hybrid" className="w-8 h-8 object-contain" />
-                  <span className="text-blue-600 font-semibold">Hybrid Solutions</span>
+                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-400">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudflare.svg" alt="Hybrid" className="w-8 h-8 object-contain hover-scale" />
+                  </div>
+                  <span className="text-blue-600 font-semibold text-sm">Hybrid Solutions</span>
                 </div>
               </div>
             </div>
 
             {/* Development */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Development</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-8 h-8 object-contain" />
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-8 h-8 object-contain" />
-                  <span className="text-green-600 font-semibold">React & Next.js</span>
+            <div className="flex flex-col h-full animate-slide-in-left animation-delay-200">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Development</h3>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-500">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-4 h-4 object-contain hover-scale" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-4 h-4 object-contain hover-scale" />
+                  </div>
+                  <span className="text-green-600 font-semibold text-sm">React & Next.js</span>
                 </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-8 h-8 object-contain" />
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-8 h-8 object-contain" />
-                  <span className="text-green-600 font-semibold">Node.js & Python</span>
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-600">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-4 h-4 object-contain hover-scale" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-4 h-4 object-contain hover-scale" />
+                  </div>
+                  <span className="text-green-600 font-semibold text-sm">Node.js & Python</span>
                 </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" className="w-8 h-8 object-contain" />
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-8 h-8 object-contain" />
-                  <span className="text-green-600 font-semibold">.NET & C#</span>
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-700">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" className="w-4 h-4 object-contain hover-scale" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-4 h-4 object-contain hover-scale" />
+                  </div>
+                  <span className="text-green-600 font-semibold text-sm">.NET & C#</span>
                 </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS" className="w-8 h-8 object-contain" />
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" className="w-8 h-8 object-contain" />
-                  <span className="text-green-600 font-semibold">Mobile (iOS/Android)</span>
+                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS" className="w-4 h-4 object-contain" />
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" className="w-4 h-4 object-contain" />
+                  </div>
+                  <span className="text-green-600 font-semibold text-sm">Mobile (iOS/Android)</span>
                 </div>
               </div>
             </div>
 
             {/* Databases */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Databases</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" className="w-8 h-8 object-contain" />
-                  <span className="text-purple-600 font-semibold">SQL Server</span>
+            <div className="flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Databases</h3>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-purple-600 font-semibold text-sm">SQL Server</span>
                 </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-8 h-8 object-contain" />
-                  <span className="text-purple-600 font-semibold">PostgreSQL</span>
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-purple-600 font-semibold text-sm">PostgreSQL</span>
                 </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8 object-contain" />
-                  <span className="text-purple-600 font-semibold">MongoDB</span>
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-purple-600 font-semibold text-sm">MongoDB</span>
                 </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-8 h-8 object-contain" />
-                  <span className="text-purple-600 font-semibold">Redis Cache</span>
+                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-purple-600 font-semibold text-sm">Redis Cache</span>
+                </div>
+              </div>
+            </div>
+
+            {/* SAAS Platforms */}
+            <div className="flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">SAAS Platforms</h3>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="/Technologies Logo/salesforce_logo.png" alt="Salesforce" className="w-4 h-4 object-contain" />
+                    <img src="/Technologies Logo/sap_logo.png" alt="SAP" className="w-4 h-4 object-contain" />
+                  </div>
+                  <span className="text-orange-600 font-semibold text-sm">Salesforce & SAP</span>
+                </div>
+                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-1 min-w-[32px]">
+                    <img src="/Technologies Logo/hubspot_logo.png" alt="HubSpot" className="w-4 h-4 object-contain" />
+                    <img src="/Technologies Logo/marketo_logo.png" alt="Marketo" className="w-4 h-4 object-contain" />
+                  </div>
+                  <span className="text-orange-600 font-semibold text-sm">HubSpot & Marketo</span>
+                </div>
+                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="/Technologies Logo/adobe_logo.png" alt="Adobe" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-orange-600 font-semibold text-sm">Adobe Suite</span>
+                </div>
+                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="/Technologies Logo/microsoft_dynamic_logo.png" alt="Microsoft Dynamics" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-orange-600 font-semibold text-sm">Microsoft Dynamics</span>
                 </div>
               </div>
             </div>
 
             {/* Security */}
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">Security</h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zeromq.svg" alt="Zero Trust" className="w-8 h-8 object-contain" />
-                  <span className="text-red-600 font-semibold">Zero Trust Architecture</span>
+            <div className="flex flex-col h-full">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Security</h3>
+              <div className="space-y-3 flex-1">
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zeromq.svg" alt="Zero Trust" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-red-600 font-semibold text-sm">Zero Trust Architecture</span>
                 </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/auth0.svg" alt="MFA" className="w-8 h-8 object-contain" />
-                  <span className="text-red-600 font-semibold">Multi-Factor Auth</span>
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/auth0.svg" alt="MFA" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-red-600 font-semibold text-sm">Multi-Factor Auth</span>
                 </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/letsencrypt.svg" alt="Encryption" className="w-8 h-8 object-contain" />
-                  <span className="text-red-600 font-semibold">Encryption at Rest</span>
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/letsencrypt.svg" alt="Encryption" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-red-600 font-semibold text-sm">Encryption at Rest</span>
                 </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4">
-                  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/splunk.svg" alt="SIEM" className="w-8 h-8 object-contain" />
-                  <span className="text-red-600 font-semibold">SIEM Solutions</span>
+                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/splunk.svg" alt="SIEM" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-red-600 font-semibold text-sm">SIEM Solutions</span>
                 </div>
               </div>
             </div>
@@ -1474,107 +1431,37 @@ export default function OrbitzTechnologyHomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section id="contact" className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Get In Touch And Start Your Project</h2>
-          <p className="text-xl mb-8 text-purple-100">
-            Let's discuss how Orbitz Technology can help you achieve your goals with custom IT solutions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      {/* CTA Section - New Professional Blue Design */}
+      <section id="contact" className="relative py-16 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-indigo-900/50"></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), 
+                           radial-gradient(circle at 75% 75%, rgba(79, 70, 229, 0.1) 0%, transparent 50%)`,
+        }}></div>
+        
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <div className="mb-8 animate-slideInFromBottom delay-100">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-text-reveal delay-200">Ready to empower your business?</h2>
+            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto animate-fadeInScale delay-300">
+              Let's discuss how Orbitz Technology can help you achieve your goals with custom IT solutions.
+            </p>
+          </div>
+          
+          <div className="mb-10 animate-bounceIn delay-400">
             <Button
               size="lg"
-              className="bg-white text-purple-600 hover:bg-gray-100 transition-all duration-300 px-8 py-3 rounded-full font-semibold"
+              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transform transition-all duration-300 group pulse-glow hover-glow"
               onClick={() => (window.location.href = "/contact")}
             >
-              Get In Touch
-            </Button>
-            <Button
-              size="lg"
-              className="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/30 transition-all duration-300 px-8 py-3 rounded-full font-semibold"
-              onClick={() => (window.location.href = "/contact")}
-            >
-              Schedule Free Consultation
+              Schedule a Free Consultation
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            <div className="text-center">
-              <Phone className="w-8 h-8 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Call Us</h3>
-              <p className="text-purple-100">+1 (319) 610-4889</p>
-            </div>
-            <div className="text-center">
-              <Mail className="w-8 h-8 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Email Us</h3>
-              <p className="text-purple-100">info@orbitztechnology.com</p>
-            </div>
-            <div className="text-center">
-              <Globe className="w-8 h-8 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Visit Us</h3>
-              <p className="text-purple-100">14 Kimberley Cir, Oak Brook, IL 60523</p>
-            </div>
-          </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-5 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center space-x-2 mb-6">
-                <img src="/logo2.png" alt="Orbitz Technology Logo" className="w-12 h-12 object-contain drop-shadow-lg bg-white rounded-lg p-2" />
-                <span className="text-2xl font-bold text-white align-middle">Orbitz Technology</span>
-              </div>
-              <p className="text-gray-400 text-sm mb-4 max-w-xs">Empowering businesses with innovative IT solutions, security, and digital transformation.</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                <li><a href="/industries" className="text-gray-400 hover:text-white transition-colors">Industries</a></li>
-                <li><a href="/resources" className="text-gray-400 hover:text-white transition-colors">Resources</a></li>
-                <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Solutions</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Managed IT</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Cybersecurity</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Software Development</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">IT Consulting</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-gray-400"><Phone className="w-5 h-5" /> +1 (319) 610-4889</li>
-                <li className="flex items-center gap-2 text-gray-400"><Mail className="w-5 h-5" /> info@orbitztechnology.com</li>
-                <li className="flex items-center gap-2 text-gray-400"><Globe className="w-5 h-5" /> 14 Kimberley Cir, Oak Brook, IL 60523</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.47.7a4.3 4.3 0 0 0 1.88-2.37c-.83.5-1.75.87-2.72 1.07A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.1.99C7.69 9.13 4.07 7.13 1.64 4.16c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.83 1.92 3.61-.71-.02-1.38-.22-1.97-.54v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 0 1 2 19.54c-.56 0-1.1-.03-1.64-.1A12.13 12.13 0 0 0 7.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z"/></svg></a>
-                <a href="#" className="text-gray-400 hover:text-white"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-1.72-.07-6.9-.07-8.62 0-1.72.07-2.88.36-3.8.77a6.56 6.56 0 0 0-2.36 1.54A6.56 6.56 0 0 0 .77 7.384c-.41.92-.7 2.08-.77 3.8-.07 1.72-.07 6.9 0 8.62.07 1.72.36 2.88.77 3.8a6.56 6.56 0 0 0 1.54 2.36 6.56 6.56 0 0 0 2.36 1.54c.92.41 2.08.7 3.8.77 1.72.07 6.9.07 8.62 0 1.72-.07 2.88-.36 3.8-.77a6.56 6.56 0 0 0 2.36-1.54 6.56 6.56 0 0 0 1.54-2.36c.41-.92.7-2.08.77-3.8.07-1.72.07-6.9 0-8.62-.07-1.72-.36-2.88-.77-3.8a6.56 6.56 0 0 0-1.54-2.36 6.56 6.56 0 0 0-2.36-1.54c-.92-.41-2.08-.7-3.8-.77zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2zm6.4-10.8a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88z"/></svg></a>
-                <a href="#" className="text-gray-400 hover:text-white"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.12 20.45H3.56V9h3.56v11.45zM5.34 7.5a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm15.11 12.95h-3.56v-5.59c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.68h-3.56V9h3.42v1.56h.05c.48-.91 1.65-1.85 3.39-1.85 3.63 0 4.3 2.39 4.3 5.49v6.25z"/></svg></a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2024 Orbitz Technology. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+      
       {/* AI Chatbot */}
       <Chatbot whatsappNumber="+13196104889" />
     </div>

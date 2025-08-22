@@ -19,8 +19,9 @@ export default function TechnologyAdvisoryPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="py-20 text-white relative overflow-hidden" style={{
+        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
+      }}>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -63,7 +64,7 @@ export default function TechnologyAdvisoryPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
+              <CardContent className="p-6 flex flex-col h-full">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                   <Target className="w-6 h-6 text-purple-600" />
                 </div>
@@ -91,7 +92,7 @@ export default function TechnologyAdvisoryPage() {
             </Card>
 
             <Card className="hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
+              <CardContent className="p-6 flex flex-col h-full">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                   <TrendingUp className="w-6 h-6 text-blue-600" />
                 </div>
@@ -119,7 +120,7 @@ export default function TechnologyAdvisoryPage() {
             </Card>
 
             <Card className="hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
+              <CardContent className="p-6 flex flex-col h-full">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
                   <Cloud className="w-6 h-6 text-green-600" />
                 </div>
