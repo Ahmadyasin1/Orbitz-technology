@@ -5,22 +5,22 @@ import { Button } from "@/components/ui/button"
 
 export default function ManagedITPage() {
   return (
-    <div className="min-h-screen bg-white">
+  <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{
+  <section className="py-16 text-white relative overflow-hidden" style={{
         background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
       }}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="text-center animate-slideInFromBottom delay-100">
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-text-reveal delay-200 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-text-reveal delay-200 tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
               Managed & Co-Managed IT Services
             </h1>
-            <p className="text-2xl md:text-3xl mb-10 text-pink-100 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light">
-              At Orbitz Technology, we provide Managed and Co-Managed IT Services that empower businesses to operate securely, efficiently, and without interruption. Whether you need a dedicated IT partner or an extension of your existing team, our services are built to reduce downtime, improve security, and support growth.
+            <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light drop-shadow-lg">
+              Orbitz Technology empowers your business to operate securely, efficiently, and without interruption. Whether you need a dedicated IT partner or an extension of your team, our services reduce downtime, improve security, and fuel growth.
             </p>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
+              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-bounce"
               onClick={() => (window.location.href = "/contact")}
             >
               Get Free Assessment
@@ -31,9 +31,9 @@ export default function ManagedITPage() {
       </section>
 
       {/* Company Section with Dropdown */}
-      <section className="py-20 bg-white">
+  <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8 shadow-md animate-slideInFromLeft delay-400">
+          <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl p-8 shadow-xl animate-slideInFromLeft delay-400">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <h2 className="text-3xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Company</h2>
               <div className="relative inline-block text-left">
@@ -56,31 +56,39 @@ export default function ManagedITPage() {
       </section>
 
       {/* Our Approach */}
-      <section className="py-20 bg-gray-50">
+  <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="text-center mb-16 animate-slideInFromBottom delay-100">
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-text-reveal delay-200 tracking-tight">Our Approach</h2>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light">Assessment & Discovery | Planning & Customization | Implementation & Support | Monitoring & Improvement</p>
           </div>
-          <div className="grid md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-md animate-slideInFromLeft delay-400">
-              <Shield className="w-10 h-10 text-pink-600 mb-4" />
-              <h3 className="text-lg font-bold text-pink-600 mb-2">Assessment & Discovery</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <Shield className="w-12 h-12 text-pink-500 bg-pink-100 rounded-xl p-2 shadow-md" />
+                <h3 className="text-lg font-bold text-pink-600 leading-tight">Assessment & Discovery</h3>
+              </div>
               <p className="text-gray-600 text-sm">We evaluate your IT infrastructure to uncover strengths, weaknesses, and risks.</p>
             </div>
             <div className="bg-white rounded-xl p-8 shadow-md animate-slideInFromBottom delay-500">
-              <Server className="w-10 h-10 text-orange-500 mb-4" />
-              <h3 className="text-lg font-bold text-orange-500 mb-2">Planning & Customization</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <Server className="w-12 h-12 text-orange-500 bg-orange-100 rounded-xl p-2 shadow-md" />
+                <h3 className="text-lg font-bold text-orange-500 leading-tight">Planning & Customization</h3>
+              </div>
               <p className="text-gray-600 text-sm">We design tailored solutions that align with your goals and budget.</p>
             </div>
             <div className="bg-white rounded-xl p-8 shadow-md animate-slideInFromBottom delay-600">
-              <Users className="w-10 h-10 text-blue-600 mb-4" />
-              <h3 className="text-lg font-bold text-blue-600 mb-2">Implementation & Support</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <Users className="w-12 h-12 text-blue-600 bg-blue-100 rounded-xl p-2 shadow-md" />
+                <h3 className="text-lg font-bold text-blue-600 leading-tight">Implementation & Support</h3>
+              </div>
               <p className="text-gray-600 text-sm">From onboarding to ongoing management, we deliver seamless operations.</p>
             </div>
             <div className="bg-white rounded-xl p-8 shadow-md animate-slideInFromRight delay-700">
-              <RefreshCw className="w-10 h-10 text-purple-600 mb-4" />
-              <h3 className="text-lg font-bold text-purple-600 mb-2">Monitoring & Improvement</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <RefreshCw className="w-12 h-12 text-purple-600 bg-purple-100 rounded-xl p-2 shadow-md" />
+                <h3 className="text-lg font-bold text-purple-600 leading-tight">Monitoring & Improvement</h3>
+              </div>
               <p className="text-gray-600 text-sm">We proactively monitor and continuously optimize your systems.</p>
             </div>
           </div>
@@ -88,59 +96,11 @@ export default function ManagedITPage() {
       </section>
 
       {/* Why Clients Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-text-reveal delay-200 tracking-tight">Why Clients Choose Us</h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light">End-to-End IT Support | Predictable Pricing | Proactive Protection | Flexible Engagement | Scalable Solutions | Trusted Expertise</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl p-8 shadow-md animate-slideInFromLeft delay-400">
-              <div className="flex items-center gap-4 mb-2">
-                <Shield className="w-10 h-10 text-pink-600" />
-                <h3 className="text-lg font-bold text-pink-600 leading-tight">End-to-End IT Support</h3>
-              </div>
-              <p className="text-gray-600 text-sm">From daily troubleshooting to long-term IT strategy</p>
-            </div>
-            <div className="bg-gradient-to-br from-pink-100 to-orange-100 rounded-xl p-8 shadow-md animate-slideInFromBottom delay-500">
-              <div className="flex items-center gap-4 mb-2">
-                <Server className="w-10 h-10 text-orange-500" />
-                <h3 className="text-lg font-bold text-orange-500 leading-tight">Predictable Pricing</h3>
-              </div>
-              <p className="text-gray-600 text-sm">Flat-rate packages with no hidden surprises</p>
-            </div>
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl p-8 shadow-md animate-slideInFromRight delay-600">
-              <div className="flex items-center gap-4 mb-2">
-                <Lock className="w-10 h-10 text-blue-600" />
-                <h3 className="text-lg font-bold text-blue-600 leading-tight">Proactive Protection</h3>
-              </div>
-              <p className="text-gray-600 text-sm">24/7 monitoring and advanced security defenses</p>
-            </div>
-            <div className="bg-gradient-to-br from-orange-100 to-pink-100 rounded-xl p-8 shadow-md animate-slideInFromLeft delay-700">
-              <div className="flex items-center gap-4 mb-2">
-                <Users className="w-10 h-10 text-orange-500" />
-                <h3 className="text-lg font-bold text-orange-500 leading-tight">Flexible Engagement</h3>
-              </div>
-              <p className="text-gray-600 text-sm">Choose full Managed IT or Co-Managed IT</p>
-            </div>
-            <div className="bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl p-8 shadow-md animate-slideInFromBottom delay-800">
-              <div className="flex items-center gap-4 mb-2">
-                <Cloud className="w-10 h-10 text-purple-600" />
-                <h3 className="text-lg font-bold text-purple-600 leading-tight">Scalable Solutions</h3>
-              </div>
-              <p className="text-gray-600 text-sm">Services that adapt as your business grows</p>
-            </div>
-            <div className="bg-gradient-to-br from-pink-100 to-orange-100 rounded-xl p-8 shadow-md animate-slideInFromRight delay-900">
-              <Server className="w-10 h-10 text-pink-600 mb-4" />
-              <h3 className="text-lg font-bold text-pink-600 mb-2">Trusted Expertise</h3>
-              <p className="text-gray-600 text-sm">Certified professionals with proven MSP experience</p>
-            </div>
-          </div>
-        </div>
-      </section>
+  {/* Why Clients Choose Us - Unified with Our Approach for clarity and conciseness */}
+  {/* ...existing code... */}
 
       {/* Services Table Section */}
-      <section className="py-20 bg-gray-50">
+  <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="text-center mb-16 animate-slideInFromBottom delay-100">
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-text-reveal delay-200 tracking-tight">Services at a Glance</h2>
@@ -200,7 +160,7 @@ export default function ManagedITPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white relative overflow-hidden">
+  <section className="py-12 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-pink-900/50"></div>
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)`,
@@ -223,15 +183,7 @@ export default function ManagedITPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your IT Infrastructure?</h2>
-          <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-            Contact Us Today <Phone className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
-      </section>
+  {/* ...existing code... */}
     </div>
   )
 }

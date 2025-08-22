@@ -1,8 +1,8 @@
 	"use client";
 	const company = [
-		{ name: "Overview", href: "/company/overview" },
-		{ name: "Our Approach", href: "/company/our-approach" },
-		{ name: "Our Partners", href: "/company/our-partners" },
+		{ name: "Overview", href: "/company/overview", icon: Users },
+		{ name: "Our Approach", href: "/company/our-approach", icon: Presentation },
+		{ name: "Our Partners", href: "/company/our-partners", icon: Briefcase },
 	];
 import React, { useState, useRef, useEffect } from "react"
 import { ChevronDown, Cloud, Laptop, Users, Code, Shield, Stethoscope, Briefcase, Home, Factory, GraduationCap, Scale, FileText, Presentation, Phone } from "lucide-react"
@@ -338,31 +338,17 @@ export default function Navbar() {
 								<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Insights</h3>
 								<div className="space-y-1">
 									{resources.map((resource, index) => (
-										resource.action ? (
-											<button
-												key={index}
-												onClick={() => {
-													resource.action();
-													setIsMenuOpen(false);
-												}}
-												className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100 w-full text-left"
-											>
-												<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
-												<span className="font-medium text-sm">{resource.name}</span>
-											</button>
-										) : (
-											<a
-												key={index}
-												href={resource.href}
-												target={resource.href.startsWith('http') ? '_blank' : '_self'}
-												rel={resource.href.startsWith('http') ? 'noopener noreferrer' : ''}
-												className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
-												onClick={() => setIsMenuOpen(false)}
-											>
-												<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
-												<span className="font-medium text-sm">{resource.name}</span>
-											</a>
-										)
+													<a
+														key={index}
+														href={resource.href}
+														target={resource.href.startsWith('http') ? '_blank' : '_self'}
+														rel={resource.href.startsWith('http') ? 'noopener noreferrer' : ''}
+														className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
+														onClick={() => setIsMenuOpen(false)}
+													>
+														<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
+														<span className="font-medium text-sm">{resource.name}</span>
+													</a>
 									))}
 								</div>
 							</div>
@@ -372,14 +358,15 @@ export default function Navbar() {
 													<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Company</h3>
 													<div className="space-y-1">
 														{company.map((item, index) => (
-															<a
-																key={index}
-																href={item.href}
-																className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
-																onClick={() => setIsMenuOpen(false)}
-															>
-																<span className="font-medium text-sm">{item.name}</span>
-															</a>
+																		<a
+																			key={index}
+																			href={item.href}
+																			className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
+																			onClick={() => setIsMenuOpen(false)}
+																		>
+																			{item.icon && <item.icon className="w-5 h-5 mr-3 text-purple-600 flex-shrink-0" />}
+																			<span className="font-medium text-sm">{item.name}</span>
+																		</a>
 														))}
 													</div>
 												</div>

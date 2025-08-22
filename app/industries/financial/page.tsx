@@ -1,57 +1,165 @@
-import { ArrowRight, DollarSign, Shield, TrendingUp, Phone } from "lucide-react"
+
+import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function FinancialPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
       {/* Hero Section */}
-      <section className="relative py-20 text-white overflow-hidden" style={{
-        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
+      <section className="py-16 text-white relative overflow-hidden" style={{
+        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
       }}>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6">Financial Services IT</h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Secure, compliant technology solutions for banks, credit unions, and financial institutions
-            </p>
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
-              Explore Solutions <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            Financial Software Solutions
+          </h1>
+          <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto font-light drop-shadow-lg">
+            At Orbitz Technology, we provide custom financial software and enterprise-grade solutions for banking, financial services, and insurance (BFSI) institutions looking to establish secure, smooth, and efficient operations while delivering outstanding user experiences to clients.
+            From wealth and investment management platforms to core banking systems and self-service portals, we combine cutting-edge technology with regulatory compliance to help financial organizations innovate, grow, and stay resilient in a rapidly evolving digital economy.
+          </p>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+          <h2 className="text-4xl font-bold text-center mb-8 text-purple-700">Financial Software Solutions We Deliver</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-purple-50 rounded-xl p-8 shadow-md">
+              <h3 className="text-xl font-bold text-purple-700 mb-2">Wealth & Investment Management</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Portfolio optimization</li>
+                <li>Market & volatility analysis</li>
+                <li>Risk assessment & rebalancing</li>
+                <li>Investment diversification tools</li>
+                <li>Alerts & notifications for timely trades</li>
+                <li>Model portfolio management</li>
+                <li>Investment calculators (profit/loss, position sizing, returns)</li>
+              </ul>
+              <p className="mt-4 text-gray-700 text-sm">AI-powered platforms for advisors, firms, and investors. ISO/IEC, PCI DSS, GDPR, and local regulatory compliance.</p>
+            </div>
+            <div className="bg-pink-50 rounded-xl p-8 shadow-md">
+              <h3 className="text-xl font-bold text-pink-700 mb-2">Digital Self-Service Solutions</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Chatbots & AI-powered virtual assistants</li>
+                <li>Automated customer support with escalation to agents</li>
+                <li>Personalized financial recommendations</li>
+                <li>Bias detection & advisory guidance</li>
+                <li>Expense tracking and budgeting tools</li>
+                <li>Self-service portals with FAQs & learning hubs</li>
+                <li>Secure authentication & identity verification (KYC/AML)</li>
+                <li>Personalized dashboards & insights</li>
+              </ul>
+              <p className="mt-4 text-gray-700 text-sm">Customer-friendly platforms for BFSIs, compliant with KYC/AML regulations.</p>
+            </div>
+            <div className="bg-blue-50 rounded-xl p-8 shadow-md">
+              <h3 className="text-xl font-bold text-blue-700 mb-2">Banking Software Development</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Core Banking Systems: Account management, payment processing, deposits & loan management, insurance & policy management, currency exchange, cross-border remittances & transfers, automated reporting</li>
+                <li>Mobile Banking Apps: Account creation & management, personalized dashboards, payment scheduling, location-based offers, security alerts, integration with wearables/IoT</li>
+                <li>Banking CRM Solutions: Customer journey mapping, segmentation, omnichannel engagement, workflow management, data synchronization</li>
+              </ul>
+              <p className="mt-4 text-gray-700 text-sm">End-to-end banking ecosystems and modular solutions for retail, commercial, investment, and central banks.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Financial Solutions */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-lg border hover:shadow-lg transition-shadow">
-              <DollarSign className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Banking Systems</h3>
-              <p className="text-gray-600">Modern core banking systems with real-time transaction processing</p>
+      {/* Why Orbitz Technology for BFSI */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+          <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Orbitz Technology for BFSI</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <ul className="list-disc ml-6 text-gray-700 text-left">
+                <li>Domain Expertise – Years of experience delivering software tailored to banking, insurance, and financial organizations.</li>
+                <li>Compliance-First Development – Expertise in PCI DSS, GDPR, ISO 27001, SOX, and other international financial regulations.</li>
+                <li>Enterprise-Grade Security – Failsafe encryption, role-based access, MFA, blockchain integrations, and fraud prevention.</li>
+                <li>Proven Scalability – From startup fintech platforms to enterprise banking systems.</li>
+                <li>Integration Excellence – Connecting with payment gateways, trading APIs, accounting systems, and financial ecosystems.</li>
+                <li>Innovation-Ready – AI, ML, robotic process automation (RPA), predictive analytics, blockchain, and open banking APIs.</li>
+              </ul>
             </div>
-            <div className="text-center p-8 rounded-lg border hover:shadow-lg transition-shadow">
-              <Shield className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Regulatory Compliance</h3>
-              <p className="text-gray-600">Ensure compliance with financial regulations and security standards</p>
-            </div>
-            <div className="text-center p-8 rounded-lg border hover:shadow-lg transition-shadow">
-              <TrendingUp className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-4">Risk Management</h3>
-              <p className="text-gray-600">Advanced risk assessment and fraud detection systems</p>
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <ul className="list-disc ml-6 text-gray-700 text-left">
+                <li>Enhanced security – Multi-layer encryption and fraud-proof architectures.</li>
+                <li>Improved customer trust – Compliant, transparent, and safe digital experiences.</li>
+                <li>Operational efficiency – Automation of back-office and customer-facing processes.</li>
+                <li>Personalized financial services – Tailored recommendations, insights, and products.</li>
+                <li>Faster time-to-market – Agile delivery backed by deep BFSI expertise.</li>
+                <li>Cost optimization – Reduced overheads with self-service and automation.</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Modernize Your Financial Technology</h2>
-          <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-            Get Started <Phone className="w-5 h-5 ml-2" />
-          </Button>
+      {/* Implementation Roadmap */}
+      <section className="py-12 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+          <h2 className="text-3xl font-bold mb-6 text-purple-700 text-center">Implementation Roadmap</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-purple-50 rounded-xl p-6 shadow-md">
+              <h3 className="text-lg font-bold text-purple-700 mb-2">1. Discovery & Strategy</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Industry analysis, risk assessment, and compliance gap review</li>
+                <li>Requirement gathering & technology stack selection</li>
+              </ul>
+            </div>
+            <div className="bg-pink-50 rounded-xl p-6 shadow-md">
+              <h3 className="text-lg font-bold text-pink-700 mb-2">2. Solution Development</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Platform configuration or custom development</li>
+                <li>Security-first architecture design</li>
+                <li>Third-party system/API integration</li>
+                <li>QA & regulatory testing</li>
+              </ul>
+            </div>
+            <div className="bg-blue-50 rounded-xl p-6 shadow-md">
+              <h3 className="text-lg font-bold text-blue-700 mb-2">3. Deployment & Data Migration</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Seamless transition from legacy systems</li>
+                <li>User onboarding and cross-department training</li>
+              </ul>
+            </div>
+            <div className="bg-purple-50 rounded-xl p-6 shadow-md">
+              <h3 className="text-lg font-bold text-purple-700 mb-2">4. Post-Launch & Continuous Support</h3>
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>Performance optimization & scaling</li>
+                <li>Security upgrades & compliance audits</li>
+                <li>Ongoing technical support and system modernization</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* Emerging Technologies */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
+          <h2 className="text-3xl font-bold mb-6 text-purple-700 text-center">Expertise in Emerging Financial Technologies</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <ul className="list-disc ml-6 text-gray-700">
+                <li>AI & ML – Market predictions, fraud detection, trading algorithms, robo-advisors.</li>
+                <li>Blockchain & Digital Ledger Technologies – Secure transactions, smart contracts, cross-border settlements.</li>
+                <li>RPA (Robotic Process Automation) – Automated KYC, claims, account reconciliation, and reporting.</li>
+                <li>Open Banking APIs – Interoperability and new customer experience opportunities.</li>
+                <li>Data Analytics & BI – Predictive and prescriptive dashboards for executives.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white text-center">
+        <h2 className="text-4xl font-bold mb-6">Partner With Orbitz Technology</h2>
+        <p className="text-xl mb-8 text-pink-100">
+          As a trusted technology partner, Orbitz Technology helps banks, insurance providers, and financial institutions modernize their IT ecosystems without compromising on security, compliance, or performance.<br />
+          Whether you need AI-powered wealth management platforms, next-gen mobile banking apps, or advanced risk and compliance systems, our team is ready to deliver.
+        </p>
+        <a href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</a>
       </section>
     </div>
   )

@@ -3,7 +3,7 @@
 import { ArrowRight, Shield, Lock, Eye, Phone, UserCheck, AlertTriangle, Globe, Users, Search, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export default function CybersecurityPage() {
+export default function CyberSecurityPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

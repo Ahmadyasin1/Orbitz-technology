@@ -21,7 +21,7 @@ export default function ITConsultingPage() {
       </section>
 
       {/* Consulting Services */}
-      <section className="py-20">
+    <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-8 rounded-lg border hover:shadow-lg transition-shadow">

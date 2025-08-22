@@ -96,62 +96,6 @@ export default function LegalPage() {
 
             <Card className="hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                  <FileText className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Document Automation
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Automated document generation and template management for legal forms and contracts.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Template libraries
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Auto-fill capabilities
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Version control
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                  <Users className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  Client Portals
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  Secure online portals for client communication, document sharing, and case updates.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Secure messaging
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Document sharing
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                    Case status updates
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                   <Clock className="w-6 h-6 text-orange-600" />
                 </div>
