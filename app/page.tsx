@@ -1358,18 +1358,16 @@ export default function OrbitzTechnologyHomePage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">SAAS Platforms</h3>
               <div className="space-y-3 flex-1">
                 <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="/Technologies Logo/salesforce_logo.png" alt="Salesforce" className="w-4 h-4 object-contain" />
-                    <img src="/Technologies Logo/sap_logo.png" alt="SAP" className="w-4 h-4 object-contain" />
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="/Technologies Logo/salesforce_logo.png" alt="Salesforce" className="w-8 h-8 object-contain" />
                   </div>
-                  <span className="text-orange-600 font-semibold text-sm">Salesforce & SAP</span>
+                  <span className="text-orange-600 font-semibold text-sm">Salesforce</span>
                 </div>
                 <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="/Technologies Logo/hubspot_logo.png" alt="HubSpot" className="w-4 h-4 object-contain" />
-                    <img src="/Technologies Logo/marketo_logo.png" alt="Marketo" className="w-4 h-4 object-contain" />
+                  <div className="flex items-center gap-2 min-w-[32px]">
+                    <img src="/Technologies Logo/hubspot_logo.png" alt="HubSpot" className="w-8 h-8 object-contain" />
                   </div>
-                  <span className="text-orange-600 font-semibold text-sm">HubSpot & Marketo</span>
+                  <span className="text-orange-600 font-semibold text-sm">HubSpot</span>
                 </div>
                 <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
                   <div className="flex items-center gap-2 min-w-[32px]">
