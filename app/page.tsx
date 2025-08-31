@@ -300,97 +300,6 @@ export default function OrbitzTechnologyHomePage() {
         </div>
       </section>
 
-      {/* Solutions Overview Section */}
-      <section className="relative py-16 bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden">
-        {/* Simplified Background Elements */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-3"></div>
-        <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        
-        <div className="relative max-w-6xl mx-auto px-4">
-          {/* Compact Top Section */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-purple-200 text-purple-700 rounded-full text-sm font-semibold mb-6 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse"></div>
-              SOLUTIONS INTEGRATOR
-            </div>
-            <h1 className="text-xl md:text-2xl text-gray-800 leading-relaxed max-w-3xl mx-auto font-medium animate-fade-in-up">
-              As the leading Solutions Integrator, our experts solve our clients' technology challenges by combining the right 
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-semibold"> hardware, software, and services</span>.
-            </h1>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Streamlined Content */}
-            <div className="relative">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full text-sm font-bold mb-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                SOLUTIONS
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up animation-delay-200">
-                See and surpass<br />
-                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 bg-clip-text text-transparent animate-gradient-x">
-                  what's possible
-                </span>
-              </h2>
-
-              {/* Simplified Feature highlights */}
-              <div className="grid grid-cols-2 gap-3 mt-6">
-                <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">Expert Solutions</p>
-                    <p className="text-xs text-gray-600">Tailored Technology</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 animation-delay-200">
-                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">Proven Results</p>
-                    <p className="text-xs text-gray-600">Industry Leaders</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Simplified Description */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 animate-fade-in-up animation-delay-500">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Empowering Business Success</h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3 group">
-                  <div className="w-6 h-6 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300">
-                    <ArrowRight className="w-3 h-3 text-white" />
-                  </div>
-                  <p className="text-base text-gray-700 leading-relaxed">
-                    By blending the right technologies and strategies, we empower businesses to <strong>simplify complexity and drive success</strong>.
-                  </p>
-                </div>
-                
-                <div className="flex items-start gap-3 group">
-                  <div className="w-6 h-6 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300">
-                    <ArrowRight className="w-3 h-3 text-white" />
-                  </div>
-                  <p className="text-base text-gray-700 leading-relaxed">
-                    Go beyond the expected. Discover the full scope of our <span className="text-purple-600 font-medium">AI and technology expertise</span>.
-                  </p>
-                </div>
-                
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 border border-purple-100">
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    We partner with you to identify the right strategies, tools, and solutions that drive innovation, efficiency, and sustainable growth.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* IT Capabilities Section - Moved from below */}
       <section id="services" className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
@@ -601,58 +510,73 @@ export default function OrbitzTechnologyHomePage() {
       </section>
 
       {/* Our Partners Section - Moved below IT Capabilities */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Our Partners</h2>
-            <p className="text-xl text-gray-600 animate-fadeInScale delay-300">Trusted by industry leaders and innovators</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center items-center">
-            {/* AWS */}
-            <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromLeft delay-400">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
-                <img src="/aws.png" alt="AWS" className="max-h-12 max-w-full object-contain animate-bounceIn delay-500" />
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-4">Our Partners</h2>
+          <p className="text-lg text-gray-600 mb-12">Trusted by industry leaders and innovators</p>
+          <div className="relative">
+            <div className="overflow-hidden group" style={{height: '110px'}}>
+              <div
+                className="flex gap-10 w-max items-center animate-partners-scroll group-hover:paused"
+                style={{ minWidth: 'max-content', padding: '0 32px' }}
+                onMouseEnter={e => e.currentTarget.classList.add('paused')}
+                onMouseLeave={e => e.currentTarget.classList.remove('paused')}
+              >
+                {/* Partner logos, duplicated for seamless scroll */}
+                {[
+                  { src: "/aws.png", alt: "AWS" },
+                  { src: "/insight-logo.png", alt: "Insight" },
+                  { src: "/microsoft.png", alt: "Microsoft" },
+                  { src: "/weave-logo.png", alt: "Weave" },
+                  { src: "/google.png", alt: "Google" },
+                  { src: "/teramind-logo.png", alt: "Teramind" },
+                  { src: "/cisco-meraki-logo.png", alt: "Cisco Meraki" },
+                  { src: "/chipmath-high-tech-community-logo.png", alt: "Chipmath" },
+                ].concat([
+                  { src: "/aws.png", alt: "AWS" },
+                  { src: "/insight-logo.png", alt: "Insight" },
+                  { src: "/microsoft.png", alt: "Microsoft" },
+                  { src: "/weave-logo.png", alt: "Weave" },
+                  { src: "/google.png", alt: "Google" },
+                  { src: "/teramind-logo.png", alt: "Teramind" },
+                  { src: "/cisco-meraki-logo.png", alt: "Cisco Meraki" },
+                  { src: "/chipmath-high-tech-community-logo.png", alt: "Chipmath" },
+                ]).map((partner, idx) => (
+                  <img
+                    key={idx}
+                    src={partner.src}
+                    alt={partner.alt}
+                    className="object-contain h-14 w-28 mx-2 drop-shadow transition-transform duration-300 hover:scale-105"
+                    style={{ filter: 'none', background: 'transparent' }}
+                  />
+                ))}
               </div>
-              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-600">AWS</span>
-            </a>
-            {/* Insight */}
-            <a href="https://www.insight.com/en_US/home.html" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromBottom delay-500">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
-                <img src="/insight-logo.png" alt="Insight" className="max-h-12 max-w-full object-contain animate-bounceIn delay-600" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-700">Insight</span>
-            </a>
-            {/* Microsoft */}
-            <a href="https://www.microsoft.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromLeft delay-600">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
-                <img src="/microsoft.png" alt="Microsoft" className="max-h-12 max-w-full object-contain animate-bounceIn delay-700" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Microsoft</span>
-            </a>
-            {/* Weave */}
-            <a href="https://www.getweave.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromBottom delay-700">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
-                <img src="/weave-logo.png" alt="Weave" className="max-h-12 max-w-full object-contain animate-bounceIn delay-800" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Weave</span>
-            </a>
-            {/* Google */}
-            <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group animate-slideInFromRight delay-800">
-              <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 flex items-center justify-center w-32 h-20 mb-2 group-hover:shadow-xl transition-all hover-lift hover-scale">
-                <img src="/google.png" alt="Google" className="max-h-12 max-w-full object-contain animate-bounceIn delay-800" />
-              </div>
-              <span className="text-gray-800 font-semibold text-base mt-1 animate-fadeInScale delay-800">Google</span>
-            </a>
+            </div>
+            <style jsx>{`
+              @keyframes partners-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-partners-scroll {
+                animation: partners-scroll 38s linear infinite;
+              }
+              .group:hover .animate-partners-scroll,
+              .animate-partners-scroll.paused {
+                animation-play-state: paused !important;
+              }
+            `}</style>
           </div>
         </div>
       </section>
 
       {/* Case Studies Section - Slalom Inspired Design */}
-      <section id="case-studies-section" className="py-20 bg-gray-50">
+      <section id="case-studies-section" className="py-10 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Success Stories & Insights</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300">Discover how we've helped businesses transform with cutting-edge technology solutions</p>
+          <div className="text-center mb-8 animate-slideInFromBottom delay-100">
+            <h2 className="text-4xl font-bold text-gray-900 mb-2 animate-text-reveal delay-200">Case Studies</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300 whitespace-nowrap">
+              See How We've Helped Businesses Achieve Growth Through Innovative IT Solutions
+            </p>
           </div>
           
           {/* Horizontal Scrollable Case Studies with Image Focus */}
@@ -901,169 +825,72 @@ export default function OrbitzTechnologyHomePage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                Transforming Your Business with Strategic Technology
-              </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed max-w-xl">
-                Orbitz Technology delivers digital transformation and measurable growth through innovative IT solutions and deep industry expertise.
-              </p>
-
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Enterprise-Grade Security</h3>
-                    <p className="text-gray-600">
-                      Advanced cybersecurity frameworks including HIPAA, PCI DSS, NIST, and GDPR compliance to protect
-                      your most valuable assets.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Scalable Cloud Architecture</h3>
-                    <p className="text-gray-600">
-                      Future-proof cloud solutions that grow with your business, ensuring optimal performance and
-                      cost-efficiency at every stage.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Custom Software Excellence</h3>
-                    <p className="text-gray-600">
-                      Bespoke applications designed specifically for your workflow, from mobile apps to enterprise CRM
-                      and ERP systems.
-                    </p>
-                  </div>
-                </div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 tracking-tight">By The Numbers: <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">World-Class Software Development Consulting</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto text-left text-gray-700 mb-14">
+              <div>
+                <h3 className="font-semibold text-xl mb-2 text-blue-700">AI Solutions & Automation</h3>
+                <p className="text-base">Transform productivity with intelligent automation and AI-driven workflows that eliminate manual tasks.</p>
               </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => (window.location.href = "/contact")}
-                >
-                  Schedule Strategic Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-transparent"
-                  onClick={() => (window.location.href = "/resources/case-studies")}
-                >
-                  View Case Studies
-                </Button>
+              <div>
+                <h3 className="font-semibold text-xl mb-2 text-purple-700">Tailored Software Development</h3>
+                <p className="text-base">Custom-built applications and integrations designed to streamline your unique business processes.</p>
               </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-3xl transform rotate-3"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-8 border">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
-                    <div>
-                      <div className="text-2xl font-bold text-purple-600">99.9%</div>
-                      <div className="text-sm text-gray-600">System Uptime</div>
-                    </div>
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
-                    <div>
-                      <div className="text-2xl font-bold text-blue-600">24/7</div>
-                      <div className="text-sm text-gray-600">Expert Support</div>
-                    </div>
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
-                    <div>
-                      <div className="text-2xl font-bold text-green-600">500+</div>
-                      <div className="text-sm text-gray-600">Satisfied Clients</div>
-                    </div>
-                    <div className="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <h3 className="font-semibold text-xl mb-2 text-pink-700">Intelligent Cloud Infrastructure</h3>
+                <p className="text-base">Scalable, high-performance cloud platforms engineered to evolve with your growth trajectory while optimizing operational costs.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-xl mb-2 text-indigo-700">Comprehensive Cyber Protection</h3>
+                <p className="text-base">Multi-layered security architecture with industry-standard compliance (HIPAA, PCI DSS, SOC 2, GDPR) ensuring complete protection of your critical business data and client information.</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Work Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-text-reveal delay-200">Our Work Process</h2>
-            <p className="text-xl text-gray-600 animate-fadeInScale delay-300">A proven 4-step approach to deliver exceptional results</p>
+          <div className="relative py-8 px-2 rounded-3xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 shadow-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Stat Card 1 */}
+              <div className="bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center py-7 px-4 transition-transform duration-300 hover:-translate-y-1 animate-fadein">
+                <div className="bg-blue-100 rounded-full p-2 mb-3">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M8 17V9m4 8V9m4 8V9" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">100+</div>
+                <div className="text-base text-gray-500 font-medium">Completed Projects</div>
+              </div>
+              {/* Stat Card 2 */}
+              <div className="bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center py-7 px-4 transition-transform duration-300 hover:-translate-y-1 animate-fadein" style={{animationDelay: '0.1s'}}>
+                <div className="bg-purple-100 rounded-full p-2 mb-3">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 20v-4m0-4V4m0 12a4 4 0 1 0 0-8" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">20+</div>
+                <div className="text-base text-gray-500 font-medium">Years of Experience</div>
+              </div>
+              {/* Stat Card 3 */}
+              <div className="bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center py-7 px-4 transition-transform duration-300 hover:-translate-y-1 animate-fadein" style={{animationDelay: '0.2s'}}>
+                <div className="bg-pink-100 rounded-full p-2 mb-3">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M17 21v-4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v4" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="7" r="4" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">20,000+</div>
+                <div className="text-base text-gray-500 font-medium">Work Hours</div>
+              </div>
+              {/* Stat Card 4 */}
+              <div className="bg-white rounded-xl shadow-md border border-gray-100 flex flex-col items-center py-7 px-4 transition-transform duration-300 hover:-translate-y-1 animate-fadein" style={{animationDelay: '0.3s'}}>
+                <div className="bg-indigo-100 rounded-full p-2 mb-3">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M8 17V9m4 8V9m4 8V9" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">100+</div>
+                <div className="text-base text-gray-500 font-medium">Customers</div>
+              </div>
+            </div>
           </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Step 1 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromLeft delay-400 hover-lift">
-              <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-500 pulse-glow">
-                  <span className="text-2xl font-bold text-white">01</span>
-                </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-600">Select a Project</h3>
-                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-700">We work with you to identify the right technology solution for your business needs.</p>
-              </CardContent>
-            </Card>
-
-            {/* Step 2 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromBottom delay-500 hover-lift">
-              <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-600 pulse-glow">
-                  <span className="text-2xl font-bold text-white">02</span>
-                </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-700">Project Analysis</h3>
-                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">Our experts analyze your requirements and create a comprehensive project plan.</p>
-              </CardContent>
-            </Card>
-
-            {/* Step 3 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromBottom delay-600 hover-lift">
-              <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-700 pulse-glow">
-                  <span className="text-2xl font-bold text-white">03</span>
-                </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-800">Plan & Execute</h3>
-                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">We implement the solution with careful planning and expert execution.</p>
-              </CardContent>
-            </Card>
-
-            {/* Step 4 */}
-            <Card className="group hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white rounded-2xl animate-slideInFromRight delay-700 hover-lift">
-              <CardContent className="p-8 flex flex-col items-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6 shadow-md animate-bounceIn delay-800 pulse-glow">
-                  <span className="text-2xl font-bold text-white">04</span>
-                </div>
-                <h3 className="text-lg font-extrabold text-gray-900 mb-2 animate-fadeInScale delay-800">Deliver Results</h3>
-                <p className="text-gray-600 text-base text-center animate-slideInFromBottom delay-800">We deliver measurable results and provide ongoing support for your success.</p>
-              </CardContent>
-            </Card>
-          </div>
+          <style jsx>{`
+            .animate-fadein {
+              animation: fadein 1s ease both;
+            }
+            @keyframes fadein {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
         </div>
       </section>
 
@@ -1248,183 +1075,107 @@ export default function OrbitzTechnologyHomePage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-slide-in-bottom">Cutting-Edge Technology Stack</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-slide-in-bottom">Technology Stack</h2>
             <p className="text-xl text-gray-600 animate-fade-in-scale animation-delay-200">
               We leverage the most advanced technologies to deliver superior solutions
             </p>
           </div>
-
-          <div className="grid md:grid-cols-5 gap-6 mb-16">
-            {/* Cloud Platforms */}
-            <div className="flex flex-col h-full animate-slide-in-left animation-delay-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Cloud Platforms</h3>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-100">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" className="w-8 h-8 object-contain hover-scale" />
-                  </div>
-                  <span className="text-blue-600 font-semibold text-sm">Microsoft Azure</span>
-                </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-200">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg" alt="AWS" className="w-8 h-8 object-contain hover-scale" />
-                  </div>
-                  <span className="text-blue-600 font-semibold text-sm">Amazon AWS</span>
-                </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-300">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" className="w-8 h-8 object-contain hover-scale" />
-                  </div>
-                  <span className="text-blue-600 font-semibold text-sm">Google Cloud</span>
-                </div>
-                <div className="flex items-center gap-3 bg-blue-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-400">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudflare.svg" alt="Hybrid" className="w-8 h-8 object-contain hover-scale" />
-                  </div>
-                  <span className="text-blue-600 font-semibold text-sm">Hybrid Solutions</span>
-                </div>
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div
+                id="tech-stack-scroll-row"
+                className="flex gap-14 w-max items-center animate-tech-scroll group-hover:paused"
+                style={{ minWidth: 'max-content', padding: '0 32px' }}
+                onMouseEnter={e => e.currentTarget.classList.add('paused')}
+                onMouseLeave={e => e.currentTarget.classList.remove('paused')}
+              >
+                {/* Duplicate logos for seamless infinite scroll */}
+                {[
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+                  "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+                  "/Technologies Logo/salesforce_logo.png",
+                  "/Technologies Logo/hubspot_logo.png",
+                  "/Technologies Logo/adobe_logo.png",
+                  "/Technologies Logo/microsoft_dynamic_logo.png",
+                ].concat([
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+                  "https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+                  "/Technologies Logo/salesforce_logo.png",
+                  "/Technologies Logo/hubspot_logo.png",
+                  "/Technologies Logo/adobe_logo.png",
+                  "/Technologies Logo/microsoft_dynamic_logo.png",
+                ]).map((src, idx) => (
+                  <img
+                    key={idx}
+                    src={src}
+                    alt={src.split('/').pop()?.split('.')[0]}
+                    className="object-contain h-12 w-12 mx-2 transition-transform duration-300 hover:scale-105"
+                    style={{ background: 'transparent' }}
+                  />
+                ))}
               </div>
+            <style jsx>{`
+              @keyframes tech-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-tech-scroll {
+                animation: tech-scroll 40s linear infinite;
+              }
+              .group:hover .animate-tech-scroll,
+              .animate-tech-scroll.paused {
+                animation-play-state: paused !important;
+              }
+            `}</style>
             </div>
-
-            {/* Development */}
-            <div className="flex flex-col h-full animate-slide-in-left animation-delay-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Development</h3>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-500">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-4 h-4 object-contain hover-scale" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-4 h-4 object-contain hover-scale" />
-                  </div>
-                  <span className="text-green-600 font-semibold text-sm">React & Next.js</span>
-                </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-600">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-4 h-4 object-contain hover-scale" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-4 h-4 object-contain hover-scale" />
-                  </div>
-                  <span className="text-green-600 font-semibold text-sm">Node.js & Python</span>
-                </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px] hover-lift hover-glow transition-all duration-300 animate-card-flip animation-delay-700">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" className="w-4 h-4 object-contain hover-scale" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-4 h-4 object-contain hover-scale" />
-                  </div>
-                  <span className="text-green-600 font-semibold text-sm">.NET & C#</span>
-                </div>
-                <div className="flex items-center gap-3 bg-green-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-1 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS" className="w-4 h-4 object-contain" />
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" className="w-4 h-4 object-contain" />
-                  </div>
-                  <span className="text-green-600 font-semibold text-sm">Mobile (iOS/Android)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Databases */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Databases</h3>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-purple-600 font-semibold text-sm">SQL Server</span>
-                </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-purple-600 font-semibold text-sm">PostgreSQL</span>
-                </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-purple-600 font-semibold text-sm">MongoDB</span>
-                </div>
-                <div className="flex items-center gap-3 bg-purple-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-purple-600 font-semibold text-sm">Redis Cache</span>
-                </div>
-              </div>
-            </div>
-
-            {/* SAAS Platforms */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">SAAS Platforms</h3>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="/Technologies Logo/salesforce_logo.png" alt="Salesforce" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-orange-600 font-semibold text-sm">Salesforce</span>
-                </div>
-                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="/Technologies Logo/hubspot_logo.png" alt="HubSpot" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-orange-600 font-semibold text-sm">HubSpot</span>
-                </div>
-                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="/Technologies Logo/adobe_logo.png" alt="Adobe" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-orange-600 font-semibold text-sm">Adobe Suite</span>
-                </div>
-                <div className="flex items-center gap-3 bg-orange-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="/Technologies Logo/microsoft_dynamic_logo.png" alt="Microsoft Dynamics" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-orange-600 font-semibold text-sm">Microsoft Dynamics</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Security */}
-            <div className="flex flex-col h-full">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center min-h-[28px]">Security</h3>
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zeromq.svg" alt="Zero Trust" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-red-600 font-semibold text-sm">Zero Trust Architecture</span>
-                </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/auth0.svg" alt="MFA" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-red-600 font-semibold text-sm">Multi-Factor Auth</span>
-                </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/letsencrypt.svg" alt="Encryption" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-red-600 font-semibold text-sm">Encryption at Rest</span>
-                </div>
-                <div className="flex items-center gap-3 bg-red-50 rounded-xl py-3 px-4 min-h-[56px]">
-                  <div className="flex items-center gap-2 min-w-[32px]">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/splunk.svg" alt="SIEM" className="w-8 h-8 object-contain" />
-                  </div>
-                  <span className="text-red-600 font-semibold text-sm">SIEM Solutions</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full font-semibold"
-              onClick={() => (window.location.href = "/technology")}
-            >
-              Explore Our Technology Capabilities
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            {/* Manual Scroll Buttons */}
+            <button className="absolute top-1/2 -left-5 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:shadow-2xl border border-gray-100" onClick={() => {
+              const row = document.getElementById('tech-stack-scroll-row');
+              if (row) {
+                row.parentElement?.classList.add('paused');
+                row.scrollLeft -= 200;
+                setTimeout(() => row.parentElement?.classList.remove('paused'), 800);
+              }
+            }}>
+              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <button className="absolute top-1/2 -right-5 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:shadow-2xl border border-gray-100" onClick={() => {
+              const row = document.getElementById('tech-stack-scroll-row');
+              if (row) {
+                row.parentElement?.classList.add('paused');
+                row.scrollLeft += 200;
+                setTimeout(() => row.parentElement?.classList.remove('paused'), 800);
+              }
+            }}>
+              <ChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
           </div>
         </div>
       </section>
@@ -1434,18 +1185,13 @@ export default function OrbitzTechnologyHomePage() {
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 to-indigo-900/50"></div>
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), 
-                           radial-gradient(circle at 75% 75%, rgba(79, 70, 229, 0.1) 0%, transparent 50%)`,
+          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(79, 70, 229, 0.1) 0%, transparent 50%)`,
         }}></div>
-        
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <div className="mb-8 animate-slideInFromBottom delay-100">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-text-reveal delay-200">Ready to empower your business?</h2>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto animate-fadeInScale delay-300">
-              Let's discuss how Orbitz Technology can help you achieve your goals with custom IT solutions.
-            </p>
+            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto animate-fadeInScale delay-300">Let's discuss how Orbitz Technology can help you achieve your goals with custom IT solutions.</p>
           </div>
-          
           <div className="mb-10 animate-bounceIn delay-400">
             <Button
               size="lg"
@@ -1456,10 +1202,8 @@ export default function OrbitzTechnologyHomePage() {
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-
         </div>
       </section>
-      
       {/* AI Chatbot */}
       <Chatbot whatsappNumber="+13196104889" />
     </div>

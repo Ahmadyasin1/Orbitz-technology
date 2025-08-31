@@ -15,6 +15,7 @@ export default function HiTechServicesPage() {
           </h1>
         </div>
       </section>
+
       {/* Solutions Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -71,6 +72,7 @@ export default function HiTechServicesPage() {
           </div>
         </div>
       </section>
+
       {/* Why Choose Our Technology Solutions? */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
@@ -86,6 +88,7 @@ export default function HiTechServicesPage() {
           </ul>
         </div>
       </section>
+
       {/* Implementation Roadmap */}
       <section className="py-12 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
@@ -130,6 +133,7 @@ export default function HiTechServicesPage() {
           </div>
         </div>
       </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white text-center">
         <h2 className="text-4xl font-bold mb-6">Let’s Build the Future of Manufacturing Together</h2>
@@ -145,6 +149,7 @@ export default function HiTechServicesPage() {
           <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
         </Button>
       </section>
+
       {/* Insights Section (like homepage) */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">

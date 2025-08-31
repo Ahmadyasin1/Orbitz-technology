@@ -31,11 +31,10 @@ export default function ManufacturingIndustryPage() {
                 <li>Accelerate time-to-market for new products</li>
                 <li>Reduce downtime and optimize resource use</li>
                 <li>Streamline supply chain and inventory management</li>
-                <li>Ensure compliance and safety</li>
+                  Manufacturing Excellence Through Digital Dominance
                 <li>Enhance product quality and customer satisfaction</li>
               </ul>
-            </div>
-            <div className="bg-pink-50 rounded-xl p-8 shadow-md">
+                  Orbitz Technology empowers automotive and manufacturing enterprises to achieve operational excellence, compliance, and customer engagement through AI-driven innovation, automation, and scalable digital solutions.
               <ul className="list-disc ml-6 text-gray-700">
                 <li>Smart Factory & Digital Twin Implementations</li>
                 <li>Predictive Maintenance & Asset Management</li>

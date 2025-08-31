@@ -1,4 +1,4 @@
-
+"use client";
 import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -11,10 +11,10 @@ export default function HealthcarePage() {
       }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-            Healthcare IT Solutions
+            Empowering Better Patient Outcomes with Secure, Scalable Healthcare IT Solutions
           </h1>
           <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto font-light drop-shadow-lg">
-            At Orbitz Technology, we help healthcare providers, research institutions, pharmaceutical companies, and health startups harness the power of digital innovation. Through consulting, custom software development, implementation, integration, and long‑term support, we deliver solutions that improve patient care, enable precision diagnostics, streamline operations, and reduce costs of care.
+            Orbitz Technology helps healthcare providers, research institutions, pharmaceutical companies, and health startups harness digital innovation. We deliver consulting, custom software development, implementation, integration, and long‑term support to improve patient care, enable precision diagnostics, streamline operations, and reduce costs of care.
           </p>
         </div>
       </section>
@@ -24,19 +24,10 @@ export default function HealthcarePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <h2 className="text-4xl font-bold text-center mb-8 text-purple-700">Healthcare Solutions We Deliver</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-purple-50 rounded-xl p-8 shadow-md">
-              <h3 className="text-xl font-bold text-purple-700 mb-2">Healthcare Business Intelligence (BI)</h3>
-              <ul className="list-disc ml-6 text-gray-700">
-                <li>Transform raw clinical and operational data into actionable insights.</li>
-                <li>ETL (Extract, Transform, Load) processes</li>
-                <li>Enterprise Data Warehousing (EDW)</li>
-                <li>Data mining & predictive analytics</li>
-                <li>Dashboards, visualization, & reporting</li>
-              </ul>
-            </div>
             <div className="bg-pink-50 rounded-xl p-8 shadow-md">
               <h3 className="text-xl font-bold text-pink-700 mb-2">Telehealth Platforms</h3>
               <ul className="list-disc ml-6 text-gray-700">
+                <li>Connect providers and patients with flexible, secure telemedicine services.</li>
                 <li>Live video/audio consultations</li>
                 <li>Secure chat & image sharing</li>
                 <li>Patient records integration</li>
@@ -46,6 +37,7 @@ export default function HealthcarePage() {
             <div className="bg-blue-50 rounded-xl p-8 shadow-md">
               <h3 className="text-xl font-bold text-blue-700 mb-2">Patient Engagement Tools</h3>
               <ul className="list-disc ml-6 text-gray-700">
+                <li>Empower patients to actively manage their health and improve provider–patient communication.</li>
                 <li>Patient portals</li>
                 <li>Telehealth integration</li>
                 <li>Wellness & lifestyle apps</li>
@@ -56,6 +48,7 @@ export default function HealthcarePage() {
             <div className="bg-purple-50 rounded-xl p-8 shadow-md">
               <h3 className="text-xl font-bold text-purple-700 mb-2">Electronic Medical Records (EMR/EHR)</h3>
               <ul className="list-disc ml-6 text-gray-700">
+                <li>Manage patient data securely and support interoperability across healthcare networks.</li>
                 <li>Comprehensive medical history storage</li>
                 <li>Lab results & treatment plans in one view</li>
                 <li>Scheduling & automated reminders</li>
@@ -67,6 +60,7 @@ export default function HealthcarePage() {
             <div className="bg-pink-50 rounded-xl p-8 shadow-md">
               <h3 className="text-xl font-bold text-pink-700 mb-2">Healthcare Mobile Applications</h3>
               <ul className="list-disc ml-6 text-gray-700">
+                <li>Mobile-first apps for patients, clinicians, and administrators with seamless integration into healthcare IT ecosystems.</li>
                 <li>Remote patient monitoring</li>
                 <li>Real-time health data tracking from IoT/wearables</li>
                 <li>Mobile access to EMRs/EHRs</li>
@@ -85,29 +79,13 @@ export default function HealthcarePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
           <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Orbitz Technology?</h2>
           <p className="text-lg text-gray-700 mb-4">Healthcare organizations choose Orbitz Technology because we combine deep medical IT expertise with a commitment to compliance, scalability, and user-centric design.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <ul className="list-disc ml-6 text-gray-700 text-left">
-                <li>Healthcare IT expertise – Proven ability to build HIPAA-, GDPR-, and ISO-compliant solutions.</li>
-                <li>Standards-driven development – Familiarity with FHIR, HL7, ICD-10, DICOM, and US/EU healthcare regulations.</li>
-                <li>Scalable systems – Solutions that grow with your operations, from startups to enterprise healthcare networks.</li>
-                <li>End-to-end support – From consulting and system design through launch, upgrades, and long-term support.</li>
-                <li>Innovation-ready – Integration of AI, ML, predictive analytics, IoT, and automation for future-proof healthcare software.</li>
-              </ul>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <ul className="list-disc ml-6 text-gray-700 text-left">
-                <li>Tailored functionality – Solutions designed specifically for your workflows without unnecessary complexity.</li>
-                <li>Enhanced interoperability – Secure, frictionless data exchange across systems and devices.</li>
-                <li>Improved patient outcomes – Better data = faster, more accurate clinical decisions.</li>
-                <li>Operational efficiency – Reduced paperwork, automated processes, optimized resource allocation.</li>
-                <li>Regulatory confidence – Development aligned with HIPAA, GDPR, FDA, and ISO/IEC standards.</li>
-                <li>Scalability for growth – Flexible architecture to accommodate patients, clinicians, and facilities.</li>
-                <li>Cybersecurity protection – Multi-factor authentication, encryption, and role-based access security.</li>
-                <li>Cost efficiency – Reduced misdiagnosis, administrative errors, and care delivery costs.</li>
-              </ul>
-            </div>
-          </div>
+          <ul className="list-disc ml-6 text-gray-700 text-left max-w-3xl mx-auto">
+            <li>Healthcare IT expertise – Proven ability to build HIPAA-, GDPR-, and ISO-compliant solutions.</li>
+            <li>Standards-driven development – Familiarity with FHIR, HL7, ICD-10, DICOM, and US/EU healthcare regulations.</li>
+            <li>Scalable systems – Solutions that grow with your operations, from startups to enterprise healthcare networks.</li>
+            <li>End-to-end support – From consulting and system design through launch, upgrades, and long-term support.</li>
+            <li>Innovation-ready – Integration of AI, ML, predictive analytics, IoT, and automation for future-proof healthcare software.</li>
+          </ul>
         </div>
       </section>
 
@@ -177,7 +155,152 @@ export default function HealthcarePage() {
         <p className="text-xl mb-8 text-pink-100">
           At Orbitz Technology, we combine healthcare domain knowledge with strong engineering expertise to deliver digital solutions that transform care delivery. Whether you’re looking to create a next-gen telehealth app, modernize legacy EHRs, or implement advanced analytics, our team can help you achieve measurable results.
         </p>
-        <a href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</a>
+        <Button
+          size="lg"
+          className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
+          onClick={() => (window.location.href = "/contact")}
+        >
+          Book My Discovery Call
+          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+        </Button>
+      </section>
+
+      {/* Insights Section (like homepage) */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Insights</h2>
+            <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">Explore our latest articles, case studies, and webinars to stay ahead in healthcare innovation and best practices.</p>
+          </div>
+          <div className="relative">
+            <div className="flex gap-8 overflow-x-auto pb-4 hide-scrollbar">
+              {/* Blog Post 1 - Latest Insights */}
+              <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                   onClick={() => (window.location.href = "/resources/blog")}> 
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src="/practicee-ehr.png" 
+                    alt="Healthcare Data Analytics" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-indigo-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">BLOG POST</span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-indigo-300 text-sm font-medium mb-2 block">Healthcare Data Analytics</span>
+                    <h3 className="text-white text-xl font-bold leading-tight">How Data Analytics Improves Patient Outcomes</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    Learn how advanced analytics and AI are transforming healthcare delivery and decision-making.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sm text-gray-500">5 min read</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-sm text-gray-500">Jan 15, 2025</span>
+                    </div>
+                    <div className="flex items-center text-indigo-600 text-sm font-semibold group-hover:text-indigo-700 transition-colors">
+                      <span>Read article</span>
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Blog Post 2 */}
+              <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                   onClick={() => (window.location.href = "/resources/case-studies")}> 
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src="/modern-data-center.png" 
+                    alt="Telehealth Success" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-purple-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">CASE STUDY</span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-purple-300 text-sm font-medium mb-2 block">Telehealth Success</span>
+                    <h3 className="text-white text-xl font-bold leading-tight">Telehealth Platform Scales Nationwide</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    See how our telehealth solution helped a provider expand access and improve patient engagement.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sm text-gray-500">7 min read</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-sm text-gray-500">Feb 2, 2025</span>
+                    </div>
+                    <div className="flex items-center text-purple-600 text-sm font-semibold group-hover:text-purple-700 transition-colors">
+                      <span>Read case study</span>
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Blog Post 3 */}
+              <div className="flex-shrink-0 w-96 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer"
+                   onClick={() => (window.location.href = "/resources/webinars")}> 
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src="/ai-neural-network-data.png" 
+                    alt="Mobile Health Webinar" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-pink-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-sm font-semibold">WEBINAR</span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-pink-300 text-sm font-medium mb-2 block">Mobile Health Webinar</span>
+                    <h3 className="text-white text-xl font-bold leading-tight">Mobile Apps for Patient Engagement</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    Join our experts for a deep dive into mobile health solutions and patient engagement strategies.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sm text-gray-500">1 hr</span>
+                      <span className="text-gray-300">•</span>
+                      <span className="text-sm text-gray-500">Mar 10, 2025</span>
+                    </div>
+                    <div className="flex items-center text-pink-600 text-sm font-semibold group-hover:text-pink-700 transition-colors">
+                      <span>Watch webinar</span>
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => (window.location.href = "/resources/case-studies")}
+            >
+              View All Case Studies
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
+              onClick={() => (window.location.href = "/resources/blog")}
+            >
+              Read Latest Insights
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+        </div>
       </section>
     </div>
   )

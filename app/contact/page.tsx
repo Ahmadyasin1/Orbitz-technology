@@ -163,7 +163,6 @@ export default function ContactPage() {
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
                         <p className="text-gray-600">+1 (319) 610-4889</p>
-                        <p className="text-sm text-gray-500">Available 24/7 for emergencies</p>
                       </div>
                     </div>
 
@@ -173,8 +172,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                        <p className="text-gray-600">info@orbitztechnology.com</p>
-                        <p className="text-sm text-gray-500">We respond within 2 hours</p>
+                        <a href="mailto:info@orbitztechnology.com" className="text-gray-600 hover:underline">info@orbitztechnology.com</a>
                       </div>
                     </div>
 
@@ -203,99 +201,7 @@ export default function ContactPage() {
                   </div>
                 </CardContent>
               </Card>
-
-              <Card className="border-0 shadow-lg bg-gradient-to-br from-purple-50 to-pink-50">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose Us?</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-500" />
-                      <span className="text-gray-700">24/7 Support & Monitoring</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-500" />
-                      <span className="text-gray-700">99.9% Uptime Guarantee</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-500" />
-                      <span className="text-gray-700">Industry Compliance Expertise</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-500" />
-                      <span className="text-gray-700">Scalable Solutions</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <CheckCircle className="w-6 h-6 text-green-500" />
-                      <span className="text-gray-700">Dedicated Account Management</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Areas */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Service Areas</h2>
-            <p className="text-xl text-gray-600">We serve businesses across multiple industries and locations</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <Globe className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Geographic Coverage</h3>
-                <p className="text-gray-600 mb-4">
-                  Serving businesses throughout Illinois and the greater Midwest region, with remote support
-                  capabilities nationwide.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• Chicago Metropolitan Area</li>
-                  <li>• Oak Brook & Surrounding Areas</li>
-                  <li>• Remote Support Nationwide</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <Shield className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Industry Expertise</h3>
-                <p className="text-gray-600 mb-4">
-                  Specialized knowledge and compliance expertise across multiple regulated and high-security industries.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• Healthcare (HIPAA)</li>
-                  <li>• Financial Services (PCI DSS)</li>
-                  <li>• Legal & Professional Services</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Business Sizes</h3>
-                <p className="text-gray-600 mb-4">
-                  Tailored solutions for businesses of all sizes, from startups to established enterprises.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• Small Businesses (5-50 employees)</li>
-                  <li>• Mid-Size Companies (50-500 employees)</li>
-                  <li>• Enterprise Solutions (500+ employees)</li>
-                </ul>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>

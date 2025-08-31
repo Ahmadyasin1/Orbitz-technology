@@ -11,11 +11,10 @@ export default function FinancialPage() {
       }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-            Financial Software Solutions
+            Transforming Finance Through Innovation
           </h1>
-          <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto font-light drop-shadow-lg">
-            At Orbitz Technology, we provide custom financial software and enterprise-grade solutions for banking, financial services, and insurance (BFSI) institutions looking to establish secure, smooth, and efficient operations while delivering outstanding user experiences to clients.
-            From wealth and investment management platforms to core banking systems and self-service portals, we combine cutting-edge technology with regulatory compliance to help financial organizations innovate, grow, and stay resilient in a rapidly evolving digital economy.
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto font-light drop-shadow-lg">
+            Secure. Scalable. Intelligent. Orbitz Technology delivers modern financial software for banks, fintechs, and insurance leaders—empowering growth, compliance, and customer trust in a digital-first world.
           </p>
         </div>
       </section>

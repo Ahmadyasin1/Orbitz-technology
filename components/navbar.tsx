@@ -5,7 +5,7 @@
 		{ name: "Our Partners", href: "/company/our-partners", icon: Briefcase },
 	];
 import React, { useState, useRef, useEffect } from "react"
-import { ChevronDown, Cloud, Laptop, Users, Code, Shield, Stethoscope, Briefcase, Home, Factory, GraduationCap, Scale, FileText, Presentation, Phone } from "lucide-react"
+import { ChevronDown, Cloud, Laptop, Users, Code, Shield, Stethoscope, Briefcase, Home, Factory, GraduationCap, Scale, FileText, Presentation, Phone, Cpu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 	const services = [
@@ -19,10 +19,8 @@ import { Button } from "@/components/ui/button"
 	const industries = [
 		{ name: "Healthcare", href: "/industries/healthcare", icon: Stethoscope },
 		{ name: "Financial Services", href: "/industries/financial", icon: Briefcase },
-		{ name: "Real Estate", href: "/industries/real-estate", icon: Home },
+		{ name: "Hi-Tech Services", href: "/industries/real-estate", icon: Cpu },
 		{ name: "Manufacturing", href: "/industries/manufacturing", icon: Factory },
-		{ name: "Education", href: "/industries/education", icon: GraduationCap },
-		{ name: "Legal", href: "/industries/legal", icon: Scale },
 	]
 
 	const resources = [
