@@ -5,6 +5,7 @@
 		{ name: "Our Partners", href: "/company/our-partners", icon: Briefcase },
 	];
 import React, { useState, useRef, useEffect } from "react"
+import Link from "next/link"
 import { ChevronDown, Cloud, Laptop, Users, Code, Shield, Stethoscope, Briefcase, Home, Factory, GraduationCap, Scale, FileText, Presentation, Phone, Cpu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -77,7 +78,7 @@ export default function Navbar() {
 				<div className="flex justify-between items-center h-20">
 					{/* Logo */}
 					<div className="flex items-center">
-						<a href="/" className="flex items-center space-x-4 group">
+						<Link href="/" className="flex items-center space-x-4 group">
 							<img 
 								src="/logo.png" 
 								alt="Orbitz Technology Logo" 
@@ -86,7 +87,7 @@ export default function Navbar() {
 							<span className="text-xl lg:text-2xl font-bold text-gray-900 tracking-tight group-hover:text-purple-700 transition-colors duration-300">
 								Orbitz Technology
 							</span>
-						</a>
+						</Link>
 					</div>
 
 					{/* Desktop Navigation */}
@@ -111,7 +112,7 @@ export default function Navbar() {
 											<div className="p-4">
 												<div className="grid gap-2">
 													{services.map((service, index) => (
-														<a
+														<Link
 															key={index}
 															href={service.href}
 															className="flex items-center p-2 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
@@ -122,7 +123,7 @@ export default function Navbar() {
 															<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">
 																{service.name}
 															</span>
-														</a>
+														</Link>
 													))}
 												</div>
 											</div>
@@ -148,7 +149,7 @@ export default function Navbar() {
 											<div className="p-4">
 												<div className="grid gap-2">
 													{industries.map((industry, index) => (
-														<a
+														<Link
 															key={index}
 															href={industry.href}
 															className="flex items-center p-2 rounded-lg hover:bg-blue-50 transition-all duration-200 group"
@@ -159,7 +160,7 @@ export default function Navbar() {
 															<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
 																{industry.name}
 															</span>
-														</a>
+														</Link>
 													))}
 												</div>
 											</div>
@@ -185,20 +186,35 @@ export default function Navbar() {
 											<div className="p-4">
 												<div className="grid gap-2">
 													{resources.map((resource, index) => (
-														<a
-															key={index}
-															href={resource.href}
-															target={resource.href.startsWith('http') ? '_blank' : '_self'}
-															rel={resource.href.startsWith('http') ? 'noopener noreferrer' : ''}
-															className="flex items-center p-2 rounded-lg hover:bg-green-50 transition-all duration-200 group"
-														>
-															<div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
-																<resource.icon className="w-5 h-5 text-green-600" />
-															</div>
-															<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
-																{resource.name}
-															</span>
-														</a>
+														resource.href.startsWith('http') ? (
+															<a
+																key={index}
+																href={resource.href}
+																target="_blank"
+																rel="noopener noreferrer"
+																className="flex items-center p-2 rounded-lg hover:bg-green-50 transition-all duration-200 group"
+															>
+																<div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
+																	<resource.icon className="w-5 h-5 text-green-600" />
+																</div>
+																<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+																	{resource.name}
+																</span>
+															</a>
+														) : (
+															<Link
+																key={index}
+																href={resource.href}
+																className="flex items-center p-2 rounded-lg hover:bg-green-50 transition-all duration-200 group"
+															>
+																<div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
+																	<resource.icon className="w-5 h-5 text-green-600" />
+																</div>
+																<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+																	{resource.name}
+																</span>
+															</Link>
+														)
 													))}
 												</div>
 											</div>
@@ -224,7 +240,7 @@ export default function Navbar() {
 														<div className="p-4">
 															<div className="grid gap-2">
 																{company.map((item, index) => (
-																	<a
+																	<Link
 																		key={index}
 																		href={item.href}
 																		className="flex items-center p-2 rounded-lg hover:bg-purple-50 transition-all duration-200 group"
@@ -235,7 +251,7 @@ export default function Navbar() {
 																		<span className="ml-3 text-sm font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">
 																			{item.name}
 																		</span>
-																	</a>
+																	</Link>
 																))}
 															</div>
 														</div>
@@ -247,19 +263,19 @@ export default function Navbar() {
 					<div className="hidden lg:flex items-center space-x-4">
 						{/* Phone Number */}
 						<a 
-							href="tel:+13196104889"
-							className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group"
-						>
-							<Phone className="w-4 h-4 group-hover:text-purple-700 transition-colors" />
-							<span className="text-sm font-semibold">(319) 610-4889</span>
-						</a>
+							   href="tel:+13196104889"
+							   className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-purple-700 font-medium transition-all duration-200 rounded-lg hover:bg-purple-50 group"
+						   >
+							   <Phone className="w-4 h-4 group-hover:text-purple-700 transition-colors" />
+							   <span className="text-sm font-semibold">(319) 610-4889</span>
+						   </a>
 						{/* CTA Button */}
-						<a 
-							href="/contact" 
-							className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
-						>
-							Get Started
-						</a>
+						<Link 
+							   href="/contact" 
+							   className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+						   >
+							   Get Started
+						   </Link>
 					</div>
 
 					{/* Mobile menu button */}
@@ -302,7 +318,7 @@ export default function Navbar() {
 								<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Expertise</h3>
 								<div className="space-y-1">
 									{services.map((service, index) => (
-										<a
+										<Link
 											key={index}
 											href={service.href}
 											className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
@@ -310,7 +326,7 @@ export default function Navbar() {
 										>
 											<service.icon className="w-5 h-5 mr-3 text-purple-600 flex-shrink-0" />
 											<span className="font-medium text-sm">{service.name}</span>
-										</a>
+										</Link>
 									))}
 								</div>
 							</div>
@@ -319,7 +335,7 @@ export default function Navbar() {
 								<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Markets</h3>
 								<div className="space-y-1">
 									{industries.map((industry, index) => (
-										<a
+										<Link
 											key={index}
 											href={industry.href}
 											className="flex items-center px-3 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-all duration-200 active:bg-blue-100"
@@ -327,7 +343,7 @@ export default function Navbar() {
 										>
 											<industry.icon className="w-5 h-5 mr-3 text-blue-600 flex-shrink-0" />
 											<span className="font-medium text-sm">{industry.name}</span>
-										</a>
+										</Link>
 									))}
 								</div>
 							</div>
@@ -336,18 +352,30 @@ export default function Navbar() {
 								<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Insights</h3>
 								<div className="space-y-1">
 									{resources.map((resource, index) => (
-													<a
-														key={index}
-														href={resource.href}
-														target={resource.href.startsWith('http') ? '_blank' : '_self'}
-														rel={resource.href.startsWith('http') ? 'noopener noreferrer' : ''}
-														className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
-														onClick={() => setIsMenuOpen(false)}
-													>
-														<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
-														<span className="font-medium text-sm">{resource.name}</span>
-													</a>
-									))}
+													resource.href.startsWith('http') ? (
+														<a
+															key={index}
+															href={resource.href}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
+															onClick={() => setIsMenuOpen(false)}
+														>
+															<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
+															<span className="font-medium text-sm">{resource.name}</span>
+														</a>
+													) : (
+														<Link
+															key={index}
+															href={resource.href}
+															className="flex items-center px-3 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 rounded-lg transition-all duration-200 active:bg-green-100"
+															onClick={() => setIsMenuOpen(false)}
+														>
+															<resource.icon className="w-5 h-5 mr-3 text-green-600 flex-shrink-0" />
+															<span className="font-medium text-sm">{resource.name}</span>
+														</Link>
+													)
+												))}
 								</div>
 							</div>
 							{/* Mobile Who We Are */}
@@ -356,7 +384,7 @@ export default function Navbar() {
 													<h3 className="text-lg font-semibold text-gray-900 px-2 py-2">Company</h3>
 													<div className="space-y-1">
 														{company.map((item, index) => (
-																		<a
+																		<Link
 																			key={index}
 																			href={item.href}
 																			className="flex items-center px-3 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 rounded-lg transition-all duration-200 active:bg-purple-100"
@@ -364,20 +392,20 @@ export default function Navbar() {
 																		>
 																			{item.icon && <item.icon className="w-5 h-5 mr-3 text-purple-600 flex-shrink-0" />}
 																			<span className="font-medium text-sm">{item.name}</span>
-																		</a>
+																		</Link>
 														))}
 													</div>
 												</div>
 							</div>
 							{/* Mobile CTA */}
 							<div className="pt-4 pb-2">
-								<a 
+								<Link 
 									href="/contact" 
 									className="block w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-center shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95"
 									onClick={() => setIsMenuOpen(false)}
 								>
 									Get Started
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

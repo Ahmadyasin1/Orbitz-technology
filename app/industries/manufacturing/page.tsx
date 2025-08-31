@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -153,7 +154,7 @@ export default function ManufacturingIndustryPage() {
         <p className="text-xl mb-8 text-pink-100">
           At Orbitz Technology, we help manufacturers connect people, processes, and platforms across the value chain to deliver smarter, safer, and more sustainable operations. Whether it’s building a digital factory, optimizing the supply chain, or deploying IoT-driven predictive maintenance systems, we are your trusted partner for digital transformation in manufacturing.
         </p>
-        <a href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</a>
+        <Link href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</Link>
       </section>
     </div>
   );

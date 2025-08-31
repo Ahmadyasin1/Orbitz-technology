@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -158,7 +159,7 @@ export default function FinancialPage() {
           As a trusted technology partner, Orbitz Technology helps banks, insurance providers, and financial institutions modernize their IT ecosystems without compromising on security, compliance, or performance.<br />
           Whether you need AI-powered wealth management platforms, next-gen mobile banking apps, or advanced risk and compliance systems, our team is ready to deliver.
         </p>
-        <a href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</a>
+        <Link href="/contact" className="inline-block bg-white text-purple-700 font-bold px-10 py-4 rounded-full shadow-lg hover:bg-purple-100 transition-all text-lg">Contact Us</Link>
       </section>
     </div>
   )
