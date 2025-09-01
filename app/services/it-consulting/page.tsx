@@ -1,4 +1,5 @@
 import { ArrowRight, Target, TrendingUp, Users, Phone, FileText } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -18,14 +19,13 @@ export default function ITConsultingPage() {
               Strategic IT guidance to align technology with your business objectives and drive digital transformation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-400">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-pulse delay-500"
-                onClick={() => (window.location.href = "/contact")}
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-pulse delay-500"
               >
                 Book My Discovery Call
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -218,14 +218,13 @@ export default function ITConsultingPage() {
               At Orbitz Technology, we deliver IT Consulting Services that align technology with business goals and drive digital transformation.
             </p>
           </div>
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
-            onClick={() => (window.location.href = "/contact")}
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
           >
             Contact Us Today
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          </Link>
         </div>
       </section>
     </div>
