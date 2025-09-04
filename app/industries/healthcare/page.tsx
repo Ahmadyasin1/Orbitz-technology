@@ -1,21 +1,61 @@
 "use client";
 import { ArrowRight, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Head from "next/head"
 
 export default function HealthcarePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <>
+      <Head>
+        <title>Healthcare IT Solutions - HIPAA Compliant Systems | Orbitz Technology</title>
+        <meta name="description" content="HIPAA-compliant healthcare IT solutions including EMR/EHR systems, telehealth platforms, patient engagement tools, and healthcare mobile apps by Orbitz Technology." />
+        <meta name="keywords" content="healthcare IT, HIPAA compliant, EMR EHR systems, telehealth, patient engagement, healthcare mobile apps, medical software development" />
+        <link rel="canonical" href="https://www.orbitztechnology.com/industries/healthcare" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Healthcare IT Solutions",
+              "description": "HIPAA-compliant healthcare IT solutions including EMR/EHR systems, telehealth platforms, and patient engagement tools",
+              "provider": {
+                "@type": "Organization",
+                "name": "Orbitz Technology",
+                "url": "https://www.orbitztechnology.com",
+                "logo": "https://www.orbitztechnology.com/logo.png"
+              },
+              "serviceType": "Healthcare IT and Medical Software Development",
+              "url": "https://www.orbitztechnology.com/industries/healthcare",
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Healthcare Providers, Hospitals, Medical Practices"
+              }
+            })
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
       {/* Hero Section */}
       <section className="py-16 text-white relative overflow-hidden" style={{
         background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
       }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-            Empowering Better Patient Outcomes with Secure, Scalable Healthcare IT Solutions
+            Secure, Scalable Healthcare IT Solutions
           </h1>
-          <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto font-light drop-shadow-lg">
-            Orbitz Technology helps healthcare providers, research institutions, pharmaceutical companies, and health startups harness digital innovation. We deliver consulting, custom software development, implementation, integration, and long‑term support to improve patient care, enable precision diagnostics, streamline operations, and reduce costs of care.
-          </p>
+        </div>
+      </section>
+
+      {/* Intro Text Section */}
+      <section className="py-6 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+          <div className="grid grid-rows-3 gap-2">
+            <p className="text-lg md:text-xl text-gray-700 font-light">Orbitz Technology helps healthcare providers, research institutions, pharmaceutical companies, and health startups harness digital innovation.</p>
+            <p className="text-lg md:text-xl text-gray-700 font-light">We deliver consulting, custom software development, implementation, integration, and long-term support to improve patient care, enable precision diagnostics, streamline operations,</p>
+            <p className="text-lg md:text-xl text-gray-700 font-light">and reduce costs of care.</p>
+          </div>
         </div>
       </section>
 
@@ -57,35 +97,27 @@ export default function HealthcarePage() {
                 <li>E-prescriptions</li>
               </ul>
             </div>
-            <div className="bg-pink-50 rounded-xl p-8 shadow-md">
-              <h3 className="text-xl font-bold text-pink-700 mb-2">Healthcare Mobile Applications</h3>
-              <ul className="list-disc ml-6 text-gray-700">
-                <li>Mobile-first apps for patients, clinicians, and administrators with seamless integration into healthcare IT ecosystems.</li>
-                <li>Remote patient monitoring</li>
-                <li>Real-time health data tracking from IoT/wearables</li>
-                <li>Mobile access to EMRs/EHRs</li>
-                <li>Secure prescribing & order management</li>
-                <li>Appointment & notification management</li>
-                <li>Online consultations</li>
-                <li>Education & training portals</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Why Orbitz Technology */}
       <section className="py-12 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Orbitz Technology?</h2>
-          <p className="text-lg text-gray-700 mb-4">Healthcare organizations choose Orbitz Technology because we combine deep medical IT expertise with a commitment to compliance, scalability, and user-centric design.</p>
-          <ul className="list-disc ml-6 text-gray-700 text-left max-w-3xl mx-auto">
-            <li>Healthcare IT expertise – Proven ability to build HIPAA-, GDPR-, and ISO-compliant solutions.</li>
-            <li>Standards-driven development – Familiarity with FHIR, HL7, ICD-10, DICOM, and US/EU healthcare regulations.</li>
-            <li>Scalable systems – Solutions that grow with your operations, from startups to enterprise healthcare networks.</li>
-            <li>End-to-end support – From consulting and system design through launch, upgrades, and long-term support.</li>
-            <li>Innovation-ready – Integration of AI, ML, predictive analytics, IoT, and automation for future-proof healthcare software.</li>
-          </ul>
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center gap-8">
+          <div className="bg-white rounded-xl shadow-md p-8 flex-1">
+            <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Orbitz Technology?</h2>
+            <p className="text-lg text-gray-700 mb-4">Healthcare organizations choose Orbitz Technology because we combine deep medical IT expertise with a commitment to compliance, scalability, and user-centric design.</p>
+            <ul className="list-disc ml-6 text-gray-700 text-left max-w-3xl mx-auto">
+              <li>Healthcare IT expertise – Proven ability to build HIPAA-, GDPR-, and ISO-compliant solutions.</li>
+              <li>Standards-driven development – Familiarity with FHIR, HL7, ICD-10, DICOM, and US/EU healthcare regulations.</li>
+              <li>Scalable systems – Solutions that grow with your operations, from startups to enterprise healthcare networks.</li>
+              <li>End-to-end support – From consulting and system design through launch, upgrades, and long-term support.</li>
+              <li>Innovation-ready – Integration of AI, ML, predictive analytics, IoT, and automation for future-proof healthcare software.</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-center items-center">
+            <img src="/practicee-ehr.png" alt="Healthcare IT" className="rounded-xl shadow-md object-cover w-full h-80 max-w-md" />
+          </div>
         </div>
       </section>
 
@@ -133,18 +165,19 @@ export default function HealthcarePage() {
 
       {/* Emerging Technologies */}
       <section className="py-12 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-          <h2 className="text-3xl font-bold mb-6 text-purple-700 text-center">Expertise in Emerging Healthcare Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <ul className="list-disc ml-6 text-gray-700">
-                <li>AI & Machine Learning – Diagnostic support, predictive analytics, and clinical decision assistance.</li>
-                <li>RPA (Robotic Process Automation) – Intelligent bots for patient queries, scheduling, and reporting.</li>
-                <li>Virtual & Augmented Reality (VR/AR/MR) – Surgical precision, medical training, and patient education.</li>
-                <li>Medical Imaging Software – Automated medical image classification and analytics for faster, more accurate diagnoses.</li>
-                <li>IoT-enabled Solutions – Remote patient monitoring, connected devices, and smart medical systems.</li>
-              </ul>
-            </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center gap-8">
+          <div className="bg-white rounded-xl shadow-md p-8 flex-1">
+            <h2 className="text-3xl font-bold mb-6 text-purple-700">Expertise in Emerging Healthcare Technologies</h2>
+            <ul className="list-disc ml-6 text-gray-700">
+              <li>AI & Machine Learning – Diagnostic support, predictive analytics, and clinical decision assistance.</li>
+              <li>RPA (Robotic Process Automation) – Intelligent bots for patient queries, scheduling, and reporting.</li>
+              <li>Virtual & Augmented Reality (VR/AR/MR) – Surgical precision, medical training, and patient education.</li>
+              <li>Medical Imaging Software – Automated medical image classification and analytics for faster, more accurate diagnoses.</li>
+              <li>IoT-enabled Solutions – Remote patient monitoring, connected devices, and smart medical systems.</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-center items-center">
+            <img src="/modern-data-center.png" alt="Emerging Healthcare Tech" className="rounded-xl shadow-md object-cover w-full h-80 max-w-md" />
           </div>
         </div>
       </section>
@@ -302,6 +335,7 @@ export default function HealthcarePage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

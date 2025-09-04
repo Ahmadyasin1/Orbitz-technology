@@ -8,13 +8,13 @@ export default function SoftwareDevelopmentPage() {
     return (
       <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden animate-fadeInUp" style={{
+      <section className="py-16 text-white relative overflow-hidden" style={{
         background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
       }}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="text-center animate-fadeInUp delay-100">
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-text-reveal delay-200 tracking-tight">
-              Custom Software Development & Digital Solutions
+              Custom Software Development
             </h1>
             <p className="text-2xl md:text-3xl mb-10 text-blue-100 max-w-3xl mx-auto animate-fadeInUp delay-300 font-light">
               Unlock enterprise-grade development expertise to transform your ideas into scalable, market-ready applications!
@@ -35,7 +35,8 @@ export default function SoftwareDevelopmentPage() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What We Do: Innovative, Scalable Software Solutions Built for Your Vision</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">What We Do:</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Innovative, Scalable Software Solutions Built for Your Vision</h3>
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">From mobile apps to SaaS platforms, we deliver comprehensive development services that accelerate your digital transformation and drive measurable business growth.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

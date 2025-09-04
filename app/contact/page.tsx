@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Head from "next/head"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -33,15 +34,57 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>Contact Orbitz Technology - Get Your Free IT Consultation</title>
+        <meta name="description" content="Contact Orbitz Technology for expert IT consulting, AI development, and cybersecurity services. Get your free consultation today. Located in Oak Brook, IL." />
+        <meta name="keywords" content="contact IT consultant, free IT consultation, Orbitz Technology contact, IT services Oak Brook, technology consulting" />
+        <link rel="canonical" href="https://www.orbitztechnology.com/contact" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ContactPage",
+              "name": "Contact Orbitz Technology",
+              "description": "Get in touch with Orbitz Technology for expert IT consulting and technology solutions",
+              "provider": {
+                "@type": "Organization",
+                "name": "Orbitz Technology",
+                "url": "https://www.orbitztechnology.com",
+                "logo": "https://www.orbitztechnology.com/logo.png",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+1-319-610-4889",
+                  "contactType": "Customer Service",
+                  "email": "info@orbitztechnology.com",
+                  "areaServed": "US",
+                  "availableLanguage": "English"
+                },
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "14 Kimberley Cir",
+                  "addressLocality": "Oak Brook",
+                  "addressRegion": "IL",
+                  "postalCode": "60523",
+                  "addressCountry": "US"
+                }
+              }
+            })
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-purple-600 via-pink-500 to-purple-700 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto">
-              Ready to transform your business with cutting-edge technology? Let's start the conversation today.
-            </p>
+            <div className="text-xl md:text-2xl text-purple-100 max-w-4xl mx-auto grid grid-rows-3 gap-1">
+              <span>Ready to transform your business with cutting-edge technology?</span>
+              <span>Let's start the conversation today.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -205,6 +248,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

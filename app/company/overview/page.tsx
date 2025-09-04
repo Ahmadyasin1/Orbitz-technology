@@ -71,22 +71,7 @@ export default function CompanyOverviewPage() {
                 <p className="text-gray-700 text-lg mb-4">Our vision is a world where every business—regardless of size—has access to enterprise-grade technology that drives smarter, faster, and simpler pathways to success. We are not just participants in this digital revolution; we are the architects of transformation, pioneering the future one breakthrough solution at a time.</p>
               </Card>
             </div>
-            <div className="flex flex-row gap-6 items-stretch">
-              <Card className="flex-1 p-8 shadow-lg border-0 bg-gradient-to-br from-purple-100 via-white to-pink-100 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-2">
-                  <Image src="/chipmath-high-tech-community-logo.png" alt="Excellence" width={40} height={40} className="rounded-xl" />
-                  <h4 className="text-xl font-bold text-purple-700">Excellence</h4>
-                </div>
-                <p className="text-gray-700 text-base">Excellence is woven into our DNA. We deliver world-class solutions by combining strategic precision with technical mastery, ensuring every project exceeds expectations and drives transformational results.</p>
-              </Card>
-              <Card className="flex-1 p-8 shadow-lg border-0 bg-gradient-to-br from-pink-100 via-white to-purple-100 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-2">
-                  <Image src="/aws.png" alt="Collaboration" width={40} height={40} className="rounded-xl" />
-                  <h4 className="text-xl font-bold text-pink-600">Collaboration</h4>
-                </div>
-                <p className="text-gray-700 text-base">True partnership guides our every interaction. We work as an extension of your team, fostering open communication and shared ownership to achieve breakthrough outcomes together.</p>
-              </Card>
-            </div>
+            {/* Removed Excellence and Collaboration cards. Adjust layout to avoid white space. */}
           </div>
         </div>
         {/* Partners Logos Grid - Creative & Rich */}

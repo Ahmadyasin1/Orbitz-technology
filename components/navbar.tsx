@@ -2,7 +2,6 @@
 	const company = [
 		{ name: "Overview", href: "/company/overview", icon: Users },
 		{ name: "Our Approach", href: "/company/our-approach", icon: Presentation },
-		{ name: "Our Partners", href: "/company/our-partners", icon: Briefcase },
 	];
 import React, { useState, useRef, useEffect } from "react"
 import Link from "next/link"
@@ -21,12 +20,11 @@ import { Button } from "@/components/ui/button"
 		{ name: "Healthcare", href: "/industries/healthcare", icon: Stethoscope },
 		{ name: "Financial Services", href: "/industries/financial", icon: Briefcase },
 		{ name: "Hi-Tech Services", href: "/industries/real-estate", icon: Cpu },
-		{ name: "Manufacturing", href: "/industries/manufacturing", icon: Factory },
 	]
 
 	const resources = [
 		{ name: "Case Studies", href: "#case-studies", icon: FileText },
-		{ name: "Blog", href: "https://orbitztechnology.com/blog", icon: Presentation },
+		{ name: "Blog", href: "/resources/blog", icon: Presentation },
 	]
 
 export default function Navbar() {

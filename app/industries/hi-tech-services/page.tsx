@@ -75,17 +75,22 @@ export default function HiTechServicesPage() {
 
       {/* Why Choose Our Technology Solutions? */}
       <section className="py-12 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Choose Our Technology Solutions?</h2>
-          <ul className="list-disc ml-6 text-gray-700 text-left max-w-3xl mx-auto">
-            <li>Best-in-Class Product Engineering – 22 years of experience delivering unparalleled product engineering solutions to global enterprises and digital disruptors alike, ensuring world-class quality and reliability.</li>
-            <li>AI-Driven Innovation Pipeline – Proven track record in taking AI Proofs of Concept beyond experimentation to enterprise-scale solutions that deliver measurable business value and competitive advantage.</li>
-            <li>Transformative Solutions at Scale – Trusted partner to global technology disruptors, delivering next-generation solutions that harness the power of design thinking and scaled agile delivery methodologies.</li>
-            <li>Enterprise-Ready Expertise – Deep experience working with global enterprises across industries, understanding complex organizational needs and delivering solutions that integrate seamlessly with existing systems.</li>
-            <li>Proof-of-Concept to Production – Specialized capability in bridging the gap between innovative concepts and production-ready solutions, ensuring smooth transition from pilot to full-scale deployment.</li>
-            <li>Design Thinking Methodology – Human-centered approach to innovation that combines creative problem-solving with technical excellence to deliver solutions that truly meet user needs.</li>
-            <li>Agile Delivery at Scale – Flexible, responsive delivery models that adapt to changing requirements while maintaining quality and timeline commitments across large-scale implementations.</li>
-          </ul>
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center gap-8">
+          <div className="bg-white rounded-xl shadow-md p-8 flex-1">
+            <h2 className="text-3xl font-bold mb-6 text-purple-700">Why Choose Our Technology Solutions?</h2>
+            <ul className="list-disc ml-6 text-gray-700 text-left">
+              <li>Best-in-Class Product Engineering – 22 years of experience delivering unparalleled product engineering solutions to global enterprises and digital disruptors alike, ensuring world-class quality and reliability.</li>
+              <li>AI-Driven Innovation Pipeline – Proven track record in taking AI Proofs of Concept beyond experimentation to enterprise-scale solutions that deliver measurable business value and competitive advantage.</li>
+              <li>Transformative Solutions at Scale – Trusted partner to global technology disruptors, delivering next-generation solutions that harness the power of design thinking and scaled agile delivery methodologies.</li>
+              <li>Enterprise-Ready Expertise – Deep experience working with global enterprises across industries, understanding complex organizational needs and delivering solutions that integrate seamlessly with existing systems.</li>
+              <li>Proof-of-Concept to Production – Specialized capability in bridging the gap between innovative concepts and production-ready solutions, ensuring smooth transition from pilot to full-scale deployment.</li>
+              <li>Design Thinking Methodology – Human-centered approach to innovation that combines creative problem-solving with technical excellence to deliver solutions that truly meet user needs.</li>
+              <li>Agile Delivery at Scale – Flexible, responsive delivery models that adapt to changing requirements while maintaining quality and timeline commitments across large-scale implementations.</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-center items-center">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Hi-Tech Solutions" className="rounded-xl shadow-md object-cover w-full h-80 max-w-md" />
+          </div>
         </div>
       </section>
 
@@ -132,22 +137,6 @@ export default function HiTechServicesPage() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white text-center">
-        <h2 className="text-4xl font-bold mb-6">Let’s Build the Future of Manufacturing Together</h2>
-        <p className="text-xl mb-8 text-pink-100">
-          Orbitz Technology combines deep industry expertise with digital innovation to deliver transformative solutions for hi-tech enterprises. Ready to drive excellence?
-        </p>
-        <Button
-          size="lg"
-          className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
-          onClick={() => (window.location.href = "/contact")}
-        >
-          Book My Discovery Call
-          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
       </section>
 
       {/* Insights Section (like homepage) */}
@@ -286,6 +275,22 @@ export default function HiTechServicesPage() {
             </Button>
           </div>
         </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-purple-700 via-pink-600 to-pink-500 text-white text-center">
+        <h2 className="text-4xl font-bold mb-6">Let’s Build the Future of Manufacturing Together</h2>
+        <p className="text-xl mb-8 text-pink-100">
+          Orbitz Technology combines deep industry expertise with digital innovation to deliver transformative solutions for hi-tech enterprises. Ready to drive excellence?
+        </p>
+        <Button
+          size="lg"
+          className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow"
+          onClick={() => (window.location.href = "/contact")}
+        >
+          Book My Discovery Call
+          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+        </Button>
       </section>
     </div>
   );

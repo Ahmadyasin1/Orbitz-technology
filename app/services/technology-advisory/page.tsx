@@ -8,20 +8,20 @@ export default function TechnologyAdvisoryPage() {
     return (
       <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden animate-fadeInUp" style={{
-        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
+      <section className="py-16 text-white relative overflow-hidden" style={{
+        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1632&q=80') center/cover no-repeat`,
       }}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center animate-fadeInUp delay-100">
+          <div className="text-center animate-slideInFromBottom delay-100">
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-text-reveal delay-200 tracking-tight">
               Technology Advisory & Strategic Consulting
             </h1>
-            <p className="text-2xl md:text-3xl mb-10 text-blue-100 max-w-3xl mx-auto animate-fadeInUp delay-300 font-light">
+            <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light drop-shadow-lg">
               Unlock expert guidance and strategic insights to optimize your technology investments and accelerate digital transformation!
             </p>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-pulse delay-500"
+              className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-bounce"
               onClick={() => (window.location.href = "/contact")}
             >
               Book My Discovery Call
@@ -35,7 +35,8 @@ export default function TechnologyAdvisoryPage() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What We Do: Strategic, Results-Driven Technology Solutions Built for Your Growth</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">What We Do:</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Strategic, Results-Driven Technology Solutions Built for Your Growth</h3>
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">From digital strategy to cloud modernization, we deliver comprehensive advisory services that align technology with business objectives and drive measurable outcomes.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

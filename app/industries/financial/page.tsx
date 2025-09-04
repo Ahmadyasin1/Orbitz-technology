@@ -14,9 +14,17 @@ export default function FinancialPage() {
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
             Transforming Finance Through Innovation
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto font-light drop-shadow-lg">
-            Secure. Scalable. Intelligent. Orbitz Technology delivers modern financial software for banks, fintechs, and insurance leaders—empowering growth, compliance, and customer trust in a digital-first world.
-          </p>
+        </div>
+      </section>
+
+      {/* Intro Text Section */}
+      <section className="py-6 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 text-center">
+          <div className="grid grid-rows-3 gap-2">
+            <p className="text-lg md:text-xl text-gray-700 font-light">Secure. Scalable. Intelligent. Orbitz Technology delivers modern financial software for banks, fintechs, and insurance leaders—</p>
+            <p className="text-lg md:text-xl text-gray-700 font-light">empowering growth, compliance, and customer trust</p>
+            <p className="text-lg md:text-xl text-gray-700 font-light">in a digital-first world.</p>
+          </div>
         </div>
       </section>
 
@@ -136,18 +144,19 @@ export default function FinancialPage() {
 
       {/* Emerging Technologies */}
       <section className="py-12 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-          <h2 className="text-3xl font-bold mb-6 text-purple-700 text-center">Expertise in Emerging Financial Technologies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <ul className="list-disc ml-6 text-gray-700">
-                <li>AI & ML – Market predictions, fraud detection, trading algorithms, robo-advisors.</li>
-                <li>Blockchain & Digital Ledger Technologies – Secure transactions, smart contracts, cross-border settlements.</li>
-                <li>RPA (Robotic Process Automation) – Automated KYC, claims, account reconciliation, and reporting.</li>
-                <li>Open Banking APIs – Interoperability and new customer experience opportunities.</li>
-                <li>Data Analytics & BI – Predictive and prescriptive dashboards for executives.</li>
-              </ul>
-            </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center gap-8">
+          <div className="bg-white rounded-xl shadow-md p-8 flex-1">
+            <h2 className="text-3xl font-bold mb-6 text-purple-700">Expertise in Emerging Financial Technologies</h2>
+            <ul className="list-disc ml-6 text-gray-700">
+              <li>AI & ML – Market predictions, fraud detection, trading algorithms, robo-advisors.</li>
+              <li>Blockchain & Digital Ledger Technologies – Secure transactions, smart contracts, cross-border settlements.</li>
+              <li>RPA (Robotic Process Automation) – Automated KYC, claims, account reconciliation, and reporting.</li>
+              <li>Open Banking APIs – Interoperability and new customer experience opportunities.</li>
+              <li>Data Analytics & BI – Predictive and prescriptive dashboards for executives.</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex justify-center items-center">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Emerging Financial Tech" className="rounded-xl shadow-md object-cover w-full h-80 max-w-md" />
           </div>
         </div>
       </section>

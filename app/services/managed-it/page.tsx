@@ -1,12 +1,44 @@
-
 "use client"
 import { ArrowRight, Shield, Clock, Users, Phone, Server, Cloud, Lock, RefreshCw, ShoppingCart, UserPlus } from "lucide-react"
 import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Head from "next/head"
 
 export default function ManagedITPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <>
+      <Head>
+        <title>Managed IT Services - Orbitz Technology | 24/7 Support & Monitoring</title>
+        <meta name="description" content="Comprehensive managed IT services with 24/7 monitoring, cybersecurity, cloud solutions, and strategic IT consulting. Reduce costs and boost productivity with Orbitz Technology." />
+        <meta name="keywords" content="managed IT services, IT support Chicago, 24/7 monitoring, cybersecurity, cloud solutions, IT consulting, network management, data backup" />
+        <link rel="canonical" href="https://www.orbitztechnology.com/services/managed-it" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "Managed IT Services",
+              "description": "Comprehensive managed IT services including 24/7 monitoring, cybersecurity, cloud solutions, and strategic IT consulting",
+              "provider": {
+                "@type": "Organization",
+                "name": "Orbitz Technology",
+                "url": "https://www.orbitztechnology.com"
+              },
+              "areaServed": ["Chicago", "Illinois", "United States"],
+              "serviceType": "IT Support and Management",
+              "url": "https://www.orbitztechnology.com/services/managed-it",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "priceRange": "$$"
+              }
+            })
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50">
       {/* Hero Section */}
       <section className="py-16 text-white relative overflow-hidden" style={{
         background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
@@ -37,7 +69,8 @@ export default function ManagedITPage() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What We Do: Complete, Secure IT Solutions Designed for Your Success</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">What We Do:</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Complete, Secure IT Solutions Designed for Your Success</h3>
             <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">From network management to cybersecurity, we deliver comprehensive IT services that protect your business and drive operational excellence.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -444,6 +477,7 @@ export default function ManagedITPage() {
       </section>
 
   {/* ...existing code... */}
-    </div>
+      </div>
+    </>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import type { Metadata } from 'next'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Chatbot from "@/components/chatbot"
@@ -53,12 +54,12 @@ export default function OrbitzTechnologyHomePage() {
       id: 1,
       videoSrc: "/hero_bg.mp4", // Keep existing video for AI content
       title: {
-        line1: "Unlock Growth With Smart AI—",
+        line1: "Unlock Growth With Smart AI",
         line2: "Boost Productivity, Cut Costs"
       },
       description: "Embrace the future of work with AI-powered transformation. Drive efficiency, agility, and growth with solutions built just for you.",
       primaryButton: "Explore AI Solutions",
-      secondaryButton: "Schedule Demo",
+    secondaryButton: "Book Discovery Call",
       overlayStyle: "from-purple-600/80 via-pink-500/70 to-purple-700/80" // Original gradient
     },
     {
@@ -69,8 +70,8 @@ export default function OrbitzTechnologyHomePage() {
         line2: "for Growth"
       },
       description: "Cut through complexity with integrated hardware, infrastructure, and custom software. Scale smarter, work easier, and unlock new possibilities.",
-      primaryButton: "Discover Our Solutions",
-      secondaryButton: "Get Started",
+    primaryButton: "Discover Our Solutions",
+    secondaryButton: "Book Discovery Call",
       overlayStyle: "from-blue-600/80 via-cyan-500/70 to-blue-700/80" // Different gradient for visual distinction
     }
   ]
@@ -175,7 +176,86 @@ export default function OrbitzTechnologyHomePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      {/* SEO Head Elements */}
+      <head>
+        <title>Orbitz Technology - Leading IT Solutions, AI Development & Cybersecurity Services</title>
+        <meta name="description" content="Transform your business with Orbitz Technology's expert IT consulting, AI development, cybersecurity, and software solutions. Serving healthcare, finance, and hi-tech industries across Chicago, UK & Pakistan." />
+        <meta name="keywords" content="IT consulting Chicago, AI development services, cybersecurity solutions, software development, managed IT services, technology advisory, healthcare IT, financial IT, digital transformation" />
+        <link rel="canonical" href="https://www.orbitztechnology.com/" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Orbitz Technology",
+              "image": "https://www.orbitztechnology.com/logo.png",
+              "description": "Leading IT consulting, AI development, cybersecurity, and software solutions provider serving businesses across healthcare, finance, and hi-tech industries.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "14 Kimberley Cir",
+                "addressLocality": "Oak Brook",
+                "addressRegion": "IL",
+                "postalCode": "60523",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 41.8369,
+                "longitude": -87.9495
+              },
+              "url": "https://www.orbitztechnology.com",
+              "telephone": "+13196104889",
+              "email": "info@orbitztechnology.com",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "08:00",
+                  "closes": "18:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": "Saturday",
+                  "opens": "09:00",
+                  "closes": "14:00"
+                }
+              ],
+              "priceRange": "$$",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "47"
+              },
+              "service": [
+                {
+                  "@type": "Service",
+                  "name": "IT Consulting",
+                  "description": "Strategic IT consulting for business transformation"
+                },
+                {
+                  "@type": "Service", 
+                  "name": "AI Development",
+                  "description": "Custom AI and machine learning solutions"
+                },
+                {
+                  "@type": "Service",
+                  "name": "Cybersecurity",
+                  "description": "Comprehensive cybersecurity solutions and threat protection"
+                },
+                {
+                  "@type": "Service",
+                  "name": "Software Development",
+                  "description": "Custom software development and digital solutions"
+                }
+              ]
+            })
+          }}
+        />
+      </head>
+      
+      <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
       <section className="relative h-[88vh] flex items-center justify-center overflow-hidden">
@@ -256,12 +336,12 @@ export default function OrbitzTechnologyHomePage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-white/20 hover:scale-105 transform hover-lift group"
+                className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0 px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-blue-500/20 hover:scale-105 transform transition-all duration-400 group"
                 onClick={() => {
                   if (currentVideoIndex === 0) {
-                    window.location.href = "/services"
-                  } else {
                     window.location.href = "/services/ai-development"
+                  } else {
+                    window.location.href = "/services/technology-advisory"
                   }
                 }}
               >
@@ -270,7 +350,7 @@ export default function OrbitzTechnologyHomePage() {
               </Button>
               <Button
                 size="lg"
-                className="bg-white text-purple-600 hover:bg-purple-50 hover:text-purple-700 transition-all duration-500 px-10 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-purple-500/30 hover:scale-105 transform"
+                className="bg-white text-blue-700 border-2 border-blue-600 hover:bg-blue-50 hover:text-blue-800 transition-all duration-400 px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-blue-500/20 hover:scale-105 transform"
                 onClick={() => (window.location.href = "/contact")}
               >
                 {videoContent[currentVideoIndex].secondaryButton}
@@ -343,7 +423,11 @@ export default function OrbitzTechnologyHomePage() {
                     <span>Business Consulting</span>
                   </li>
                 </ul>
-                <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                <Button 
+                  variant="ghost" 
+                  className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 text-sm font-semibold mt-auto group hover-glow"
+                  onClick={() => window.location.href = "/services/technology-advisory"}
+                >
                   Learn More 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -382,7 +466,11 @@ export default function OrbitzTechnologyHomePage() {
                     <span>NLP Solutions</span>
                   </li>
                 </ul>
-                <Button variant="ghost" className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                <Button 
+                  variant="ghost" 
+                  className="text-purple-600 hover:text-purple-700 hover:bg-purple-50 p-0 text-sm font-semibold mt-auto group hover-glow"
+                  onClick={() => window.location.href = "/services/ai-development"}
+                >
                   Learn More 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -421,7 +509,11 @@ export default function OrbitzTechnologyHomePage() {
                     <span>App Modernization</span>
                   </li>
                 </ul>
-                <Button variant="ghost" className="text-green-600 hover:text-green-700 hover:bg-green-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                <Button 
+                  variant="ghost" 
+                  className="text-green-600 hover:text-green-700 hover:bg-green-50 p-0 text-sm font-semibold mt-auto group hover-glow"
+                  onClick={() => window.location.href = "/services/software-development"}
+                >
                   Learn More 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -460,7 +552,11 @@ export default function OrbitzTechnologyHomePage() {
                     <span>Infrastructure Protection</span>
                   </li>
                 </ul>
-                <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                <Button 
+                  variant="ghost" 
+                  className="text-red-600 hover:text-red-700 hover:bg-red-50 p-0 text-sm font-semibold mt-auto group hover-glow"
+                  onClick={() => window.location.href = "/services/cybersecurity"}
+                >
                   Learn More 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -499,7 +595,11 @@ export default function OrbitzTechnologyHomePage() {
                     <span>24/7 Monitoring</span>
                   </li>
                 </ul>
-                <Button variant="ghost" className="text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 p-0 text-sm font-semibold mt-auto group hover-glow">
+                <Button 
+                  variant="ghost" 
+                  className="text-cyan-600 hover:text-cyan-700 hover:bg-cyan-50 p-0 text-sm font-semibold mt-auto group hover-glow"
+                  onClick={() => window.location.href = "/services/managed-it"}
+                >
                   Learn More 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -816,7 +916,7 @@ export default function OrbitzTechnologyHomePage() {
               className="border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
               onClick={() => (window.location.href = "/resources/blog")}
             >
-              Read Latest Insights
+              Read Latest Blogs
               <BookOpen className="w-5 h-5 ml-2" />
             </Button>
           </div>
@@ -826,7 +926,8 @@ export default function OrbitzTechnologyHomePage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 tracking-tight">By The Numbers: <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">World-Class Software Development Consulting</span></h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-2 text-gray-900 tracking-tight">By The Numbers</h2>
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">World-Class Software Development Consulting</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto text-left text-gray-700 mb-14">
               <div>
                 <h3 className="font-semibold text-xl mb-2 text-blue-700">AI Solutions & Automation</h3>
@@ -1206,6 +1307,7 @@ export default function OrbitzTechnologyHomePage() {
       </section>
       {/* AI Chatbot */}
       <Chatbot whatsappNumber="+13196104889" />
-    </div>
+      </div>
+    </>
   )
 }

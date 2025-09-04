@@ -32,15 +32,11 @@ export default function ITConsultingPage() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-20 bg-white animate-fadeInUp delay-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-text-reveal delay-200 tracking-tight">
-              What We Do: Smart, Scalable IT Consulting
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light">
-              From strategy to deployment, we deliver comprehensive IT consulting solutions that transform your business and drive measurable results.
-            </p>
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">What We Do:</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Complete, Secure IT Solutions Designed for Your Success</h3>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {/* Strategic Planning */}

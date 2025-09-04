@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import Head from "next/head"
 import { 
   ArrowRight, 
   Brain, 
@@ -19,23 +20,56 @@ import {
 
 export default function AIDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>AI Development Services - Custom AI Solutions | Orbitz Technology</title>
+        <meta name="description" content="Transform your business with custom AI development services. Machine learning, natural language processing, computer vision, and AI automation solutions by Orbitz Technology experts." />
+        <meta name="keywords" content="AI development, machine learning, artificial intelligence, custom AI solutions, NLP, computer vision, AI automation, business intelligence" />
+        <link rel="canonical" href="https://www.orbitztechnology.com/services/ai-development" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": "AI Development Services",
+              "description": "Custom AI and machine learning solutions including natural language processing, computer vision, and AI automation",
+              "provider": {
+                "@type": "Organization",
+                "name": "Orbitz Technology",
+                "url": "https://www.orbitztechnology.com",
+                "logo": "https://www.orbitztechnology.com/logo.png"
+              },
+              "serviceType": "AI Development and Machine Learning",
+              "url": "https://www.orbitztechnology.com/services/ai-development",
+              "areaServed": ["United States", "United Kingdom", "Pakistan"],
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "priceRange": "$$$"
+              }
+            })
+          }}
+        />
+      </Head>
+      
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden animate-fadeInUp" style={{
-        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
+      <section className="py-16 text-white relative overflow-hidden" style={{
+        background: `linear-gradient(to bottom, rgba(40, 7, 89, 0.7), rgba(236, 72, 153, 0.7)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat`,
       }}>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center animate-fadeInUp delay-100">
+          <div className="text-center animate-slideInFromBottom delay-100">
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-text-reveal delay-200 tracking-tight">
               AI Development Solutions
             </h1>
-            <p className="text-2xl md:text-3xl mb-10 text-blue-100 max-w-3xl mx-auto animate-fadeInUp delay-300 font-light">
+            <p className="text-2xl md:text-3xl mb-10 text-white/90 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light drop-shadow-lg">
               Smart, scalable AI services tailored for your business. Automate, gain insights, and innovate with Orbitz Technology.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-400">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-orange-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-pulse delay-500"
+                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white border-0 px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transform transition-all duration-300 group hover-glow animate-bounce"
                 onClick={() => (window.location.href = "/contact")}
               >
                 Book My Discovery Call
@@ -47,198 +81,113 @@ export default function AIDevelopmentPage() {
       </section>
 
   {/* What We Do Section */}
-  <section className="py-20 bg-white animate-fadeInUp delay-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center mb-16 animate-slideInFromBottom delay-100">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-text-reveal delay-200 tracking-tight">
-              What We Do: Smart, Scalable AI Services
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto animate-fadeInScale delay-300 font-light">
-              From strategy to deployment, we deliver comprehensive AI solutions that transform your business and drive measurable results.
-            </p>
-          </div>
+  <section className="py-12 bg-white">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="text-center mb-10">
+      <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-gray-900">What We Do:</h2>
+      <h3 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Smart, Scalable AI Services</h3>
+      <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">From machine learning models to intelligent automation, we deliver comprehensive AI services that drive innovation and operational efficiency.</p>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {/* AI Strategy & Consulting */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-blue-50 to-indigo-50 h-full animate-slideInFromLeft delay-400 hover-lift">
-              <CardContent className="p-6 flex flex-col h-full">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center animate-bounceIn delay-500">
-                    <Brain className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 leading-tight animate-fadeInScale delay-600">AI Strategy & Consulting</h3>
-                </div>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-700">
-                  Planning to go AI-first? We partner with you to assess your landscape, define your AI roadmap, and unlock the right opportunities—from AIOps to legacy system integration and automation strategy.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    AI readiness assessment
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Strategic roadmap development
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Legacy system integration
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Custom Generative AI Systems */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-purple-50 to-pink-50 h-full animate-slideInFromBottom delay-500 hover-lift">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center animate-bounceIn delay-600">
-                    <Zap className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 animate-fadeInScale delay-700">
-                    Custom Generative AI Systems
-                  </h3>
-                </div>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-800">
-                  Leverage the power of generative intelligence—our AI agents and custom model development solutions help you automatically generate content, insights, and experiences that truly resonate.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Custom model training
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Model adaptation & fine-tuning
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Full lifecycle support
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* AI-Powered Chatbots & Agents */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-green-50 to-emerald-50 h-full animate-slideInFromRight delay-600 hover-lift">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center animate-bounceIn delay-700">
-                    <Bot className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 animate-fadeInScale delay-800">
-                    AI-Powered Chatbots & Agents
-                  </h3>
-                </div>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-800">
-                  Deliver round-the-clock support with smart chatbots and AI agents. From LLM-powered assistants to voice interfaces, our bots understand context and engage naturally.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Natural conversational bots
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Intelligent assistants
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Voice interface integration
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Advanced Machine Learning */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-red-50 to-orange-50 h-full animate-slideInFromLeft delay-700 hover-lift">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 animate-bounceIn delay-800">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 animate-fadeInScale delay-800">
-                  Advanced Machine Learning & Predictive Intelligence
-                </h3>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-800">
-                  Predict trends, detect fraud, personalize responses, and automate intelligently. Using tailored ML pipelines and real-time models to drive smarter decisions.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Predictive analytics
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Fraud detection systems
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Intelligent automation
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Generative AI for Content */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-cyan-50 to-blue-50 h-full animate-slideInFromBottom delay-800 hover-lift">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 animate-bounceIn delay-800">
-                  <Cpu className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 animate-fadeInScale delay-800">
-                  Generative AI for Content & Innovation
-                </h3>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-800">
-                  From generating text, images, or code to streamlining creative workflows, our generative AI capabilities span all forms of media using top frameworks.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Content generation (text, images, code)
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Creative workflow automation
-                  </li>
-                  <li className="flex items-center animate-slideInFromLeft delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Multi-media AI solutions
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* End-to-End Integration */}
-            <Card className="hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-indigo-50 to-purple-50 h-full animate-slideInFromRight delay-800 hover-lift">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 animate-bounceIn delay-800">
-                  <Database className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 animate-fadeInScale delay-800">
-                  End-to-End Integration & Deployment
-                </h3>
-                <p className="text-gray-600 mb-6 text-sm leading-relaxed animate-slideInFromBottom delay-800">
-                  We ensure your AI solutions integrate securely and seamlessly with DevOps, AIOps, vector databases, RAG systems, and model observability.
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    DevOps & AIOps integration
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Vector databases & RAG systems
-                  </li>
-                  <li className="flex items-center animate-slideInFromRight delay-800">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                    Model observability & monitoring
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* AI Strategy & Consulting */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <Brain className="w-10 h-10 text-blue-600 bg-blue-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-blue-700">AI Strategy & Consulting</h3>
         </div>
-      </section>
+        <p className="text-gray-700 text-base mb-2">
+          Planning to go AI-first? We partner with you to assess your landscape, define your AI roadmap, and unlock the right opportunities—from AIOps to legacy system integration and automation strategy.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>AI readiness assessment</li>
+          <li>Strategic roadmap development</li>
+          <li>Legacy system integration</li>
+        </ul>
+      </div>
+
+      {/* Custom Generative AI Systems */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <Zap className="w-10 h-10 text-purple-600 bg-purple-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-purple-600">Custom Generative AI Systems</h3>
+        </div>
+        <p className="text-gray-700 text-base mb-2">
+          Leverage the power of generative intelligence—our AI agents and custom model development solutions help you automatically generate content, insights, and experiences that truly resonate.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>Custom model training</li>
+          <li>Model adaptation & fine-tuning</li>
+          <li>Full lifecycle support</li>
+        </ul>
+      </div>
+
+      {/* AI-Powered Chatbots & Agents */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <Bot className="w-10 h-10 text-pink-500 bg-pink-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-pink-600">AI-Powered Chatbots & Agents</h3>
+        </div>
+        <p className="text-gray-700 text-base mb-2">
+          Deliver round-the-clock support with smart chatbots and AI agents. From LLM-powered assistants to voice interfaces, our bots understand context and engage naturally.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>Natural conversational bots</li>
+          <li>Intelligent assistants</li>
+          <li>Voice interface integration</li>
+        </ul>
+      </div>
+
+      {/* Advanced Machine Learning */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <TrendingUp className="w-10 h-10 text-orange-500 bg-orange-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-orange-500">Advanced Machine Learning</h3>
+        </div>
+        <p className="text-gray-700 text-base mb-2">
+          Predict trends, detect fraud, personalize responses, and automate intelligently. Using tailored ML pipelines and real-time models to drive smarter decisions.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>Predictive analytics</li>
+          <li>Fraud detection systems</li>
+          <li>Intelligent automation</li>
+        </ul>
+      </div>
+
+      {/* Generative AI for Content */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <Cpu className="w-10 h-10 text-green-600 bg-green-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-green-600">Generative AI for Content</h3>
+        </div>
+        <p className="text-gray-700 text-base mb-2">
+          From generating text, images, or code to streamlining creative workflows, our generative AI capabilities span all forms of media using top frameworks.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>Content generation (text, images, code)</li>
+          <li>Creative workflow automation</li>
+          <li>Multi-media AI solutions</li>
+        </ul>
+      </div>
+
+      {/* End-to-End Integration */}
+      <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col gap-4">
+        <div className="flex items-center gap-3 mb-2">
+          <Database className="w-10 h-10 text-indigo-600 bg-indigo-100 rounded-xl p-2" />
+          <h3 className="text-xl font-bold text-indigo-600">End-to-End Integration</h3>
+        </div>
+        <p className="text-gray-700 text-base mb-2">
+          We ensure your AI solutions integrate securely and seamlessly with DevOps, AIOps, vector databases, RAG systems, and model observability.
+        </p>
+        <ul className="list-disc pl-5 text-gray-500 text-sm space-y-1">
+          <li>DevOps & AIOps integration</li>
+          <li>Vector databases & RAG systems</li>
+          <li>Model observability & monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Why Choose Orbitz Technology Section */}
   <section className="py-20 bg-gray-50 animate-fadeInUp delay-300">
@@ -655,6 +604,7 @@ export default function AIDevelopmentPage() {
           </Button>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

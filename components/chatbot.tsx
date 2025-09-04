@@ -25,7 +25,7 @@ export default function Chatbot({ whatsappNumber = "+1234567890" }: ChatbotProps
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: '👋 Welcome to Orbitz Technology! I\'m Salman Amin, your AI assistant. Ask me about our services, case studies, or how we can help your business.',
+      text: '👋 Welcome to Orbitz Technology! I\'m Salman, your assistant. Ask me about our services, case studies, or how we can help your business.',
       sender: 'bot',
       timestamp: new Date(),
       status: 'delivered'
@@ -91,7 +91,7 @@ export default function Chatbot({ whatsappNumber = "+1234567890" }: ChatbotProps
     if (message.includes('price') || message.includes('cost') || message.includes('budget') || message.includes('quote') || message.includes('how much')) {
       setConversationStage('ready_for_human')
       return {
-        text: "I completely understand that budget is an important consideration! 💰\n\nOur pricing varies significantly based on your specific needs, project scope, and the level of customization required. Here's what I can tell you:\n\n• **AI Projects**: Typically range from $15K - $150K+ depending on complexity\n• **Cybersecurity**: Monthly services from $2K - $25K based on company size\n• **Software Development**: $50 - $200 per hour depending on expertise needed\n\nHowever, these are just rough estimates. The best way to get accurate pricing is through a personalized consultation where we understand your exact requirements.\n\nWould you like me to connect you with one of our solution specialists? They can provide a detailed quote tailored to your needs - and the consultation is completely free! 🎯",
+        text: "I completely understand that budget is an important consideration! 💰\n\nOur pricing varies significantly based on your specific needs, project scope, and the level of customization required. Here's what I can tell you:\n\n• **AI Projects**: Typically range from $15K - $150K+ depending on complexity\n• **Cybersecurity**: Monthly services from $2K - $25K based on company size\n• **Software Development**: $50 - $200 per hour depending on expertise needed\n\nHowever, these are just rough estimates. The best way to get accurate pricing is through a personalized consultation where we understand your exact requirements.\n\n**[Get In Touch](/contact)** with one of our solution specialists for a detailed quote tailored to your needs - the consultation is completely free! 🎯",
         delay: 2200
       }
     }
@@ -200,31 +200,6 @@ export default function Chatbot({ whatsappNumber = "+1234567890" }: ChatbotProps
     }, typingDelay)
   }
 
-  const handleWhatsAppRedirect = () => {
-    const conversationSummary = messages
-      .filter(msg => msg.sender === 'user')
-      .map(msg => msg.text)
-      .slice(-3) // Last 3 user messages
-      .join('\n- ')
-
-    const message = `🚀 Hello from Orbitz Technology website!
-
-I was chatting with Sarah (your AI assistant) and would like to speak with a human expert.
-
-💬 My recent questions/interests:
-- ${conversationSummary}
-
-${userName ? `Name: ${userName}` : ''}
-${userEmail ? `Email: ${userEmail}` : ''}
-
-I'm ready to discuss my requirements with your team! 😊`
-
-    const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodedMessage}`
-    
-    window.open(whatsappUrl, '_blank')
-  }
-
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
@@ -234,6 +209,21 @@ I'm ready to discuss my requirements with your team! 😊`
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  }
+
+  // Utility to format bot message text with headings and lists
+  function formatBotMessage(text: string) {
+    // Replace markdown headings (e.g., **Heading**) with styled divs
+    let formatted = text.replace(/\*\*(.+?)\*\*/g, '<span class="font-semibold text-blue-700 text-base md:text-lg">$1</span>');
+    // Replace numbered lists
+    formatted = formatted.replace(/\n(\d+)\. /g, '<br/><span class="font-semibold text-blue-700">$1.</span> ');
+    // Replace bullet lists
+    formatted = formatted.replace(/\n• /g, '<br/><span class="text-blue-600">•</span> ');
+    // Replace line breaks
+    formatted = formatted.replace(/\n/g, '<br/>');
+    // Replace [Get In Touch](/contact) with a styled link
+    formatted = formatted.replace(/\[Get In Touch\]\(\/contact\)/g, '<a href="/contact" class="text-blue-600 underline font-semibold">Get In Touch</a>');
+    return formatted;
   }
 
   return (
@@ -250,7 +240,7 @@ I'm ready to discuss my requirements with your team! 😊`
               <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
             </div>
             <div className="absolute right-full mr-3 bg-white text-purple-700 px-3 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap border border-purple-100 shadow">
-              Chat with our AI Assistant
+              Chat with Salman
             </div>
           </Button>
         )}
@@ -273,8 +263,8 @@ I'm ready to discuss my requirements with your team! 😊`
                 <div className="flex items-center gap-2">
                   <img src="/salman_amin.png" alt="AI Assistant" className="w-9 h-9 rounded-full border border-blue-200 object-cover" />
                   <div>
-                    <CardTitle className="text-sm font-semibold text-gray-900">Salman Amin</CardTitle>
-                    <div className="text-xs text-gray-500">AI Assistant, Orbitz Technology</div>
+                    <CardTitle className="text-sm font-semibold text-gray-900">Salman</CardTitle>
+                    <div className="text-xs text-gray-500">Orbitz Technology</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -315,9 +305,11 @@ I'm ready to discuss my requirements with your team! 😊`
                             <Bot className="w-4 h-4 text-blue-400" />
                           )}
                         </div>
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap font-normal">
-                          {message.text}
-                        </p>
+                        {message.sender === 'bot' ? (
+                          <p className="text-sm leading-relaxed whitespace-pre-wrap font-normal" dangerouslySetInnerHTML={{ __html: formatBotMessage(message.text) }} />
+                        ) : (
+                          <p className="text-sm leading-relaxed whitespace-pre-wrap font-normal">{message.text}</p>
+                        )}
                         <div className="flex items-center justify-between w-full mt-1 text-xs text-gray-400">
                           <span>{formatTime(message.timestamp)}</span>
                           {message.sender === 'user' && (
@@ -337,25 +329,11 @@ I'm ready to discuss my requirements with your team! 😊`
                           <div className="w-2 h-2 bg-blue-300 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                           <div className="w-2 h-2 bg-blue-300 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                         </div>
-                        <span className="text-xs text-gray-400">Salman Amin is typing...</span>
+                        <span className="text-xs text-gray-400">Salman is typing...</span>
                       </div>
                     </div>
                   )}
                   <div ref={messagesEndRef} />
-                </div>
-
-                {/* WhatsApp Direct Button */}
-                <div className="px-3 py-1 bg-green-500 border-t border-green-100 flex items-center gap-2 rounded-b-xl">
-                  <Button
-                    onClick={handleWhatsAppRedirect}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-1 rounded-md transition-all duration-300 flex items-center justify-center gap-2 shadow text-sm"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp</span>
-                  </Button>
-                  <div className="bg-white/30 px-2 py-0.5 rounded text-xs font-semibold text-white ml-2">
-                    Instant
-                  </div>
                 </div>
 
                 {/* Enhanced Input Area */}
